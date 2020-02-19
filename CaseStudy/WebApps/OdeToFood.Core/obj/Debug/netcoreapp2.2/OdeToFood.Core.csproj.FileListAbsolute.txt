@@ -1,0 +1,12 @@
+f:\SourceCode\Research_BackEnd\LDTSolutions\CaseStudy\WebApps\OdeToFood.Core\bin\Debug\netcoreapp2.2\OdeToFood.Core.deps.json
+f:\SourceCode\Research_BackEnd\LDTSolutions\CaseStudy\WebApps\OdeToFood.Core\bin\Debug\netcoreapp2.2\OdeToFood.Core.dll
+f:\SourceCode\Research_BackEnd\LDTSolutions\CaseStudy\WebApps\OdeToFood.Core\bin\Debug\netcoreapp2.2\OdeToFood.Core.pdb
+f:\SourceCode\Research_BackEnd\LDTSolutions\CaseStudy\WebApps\OdeToFood.Core\bin\Debug\netcoreapp2.2\LDTSolutions.Common.Domain.dll
+f:\SourceCode\Research_BackEnd\LDTSolutions\CaseStudy\WebApps\OdeToFood.Core\bin\Debug\netcoreapp2.2\LDTSolutions.Common.Domain.pdb
+f:\SourceCode\Research_BackEnd\LDTSolutions\CaseStudy\WebApps\OdeToFood.Core\obj\Debug\netcoreapp2.2\OdeToFood.Core.csprojAssemblyReference.cache
+f:\SourceCode\Research_BackEnd\LDTSolutions\CaseStudy\WebApps\OdeToFood.Core\obj\Debug\netcoreapp2.2\OdeToFood.Core.csproj.CoreCompileInputs.cache
+f:\SourceCode\Research_BackEnd\LDTSolutions\CaseStudy\WebApps\OdeToFood.Core\obj\Debug\netcoreapp2.2\OdeToFood.Core.AssemblyInfoInputs.cache
+f:\SourceCode\Research_BackEnd\LDTSolutions\CaseStudy\WebApps\OdeToFood.Core\obj\Debug\netcoreapp2.2\OdeToFood.Core.AssemblyInfo.cs
+f:\SourceCode\Research_BackEnd\LDTSolutions\CaseStudy\WebApps\OdeToFood.Core\obj\Debug\netcoreapp2.2\OdeToFood.Core.csproj.CopyComplete
+f:\SourceCode\Research_BackEnd\LDTSolutions\CaseStudy\WebApps\OdeToFood.Core\obj\Debug\netcoreapp2.2\OdeToFood.Core.dll
+f:\SourceCode\Research_BackEnd\LDTSolutions\CaseStudy\WebApps\OdeToFood.Core\obj\Debug\netcoreapp2.2\OdeToFood.Core.pdb

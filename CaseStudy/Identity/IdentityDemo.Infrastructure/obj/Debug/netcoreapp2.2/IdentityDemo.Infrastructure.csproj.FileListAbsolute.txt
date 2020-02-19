@@ -1,0 +1,9 @@
+f:\SourceCode\Research_BackEnd\LDTSolutions\CaseStudy\Identity\IdentityDemo.Infrastructure\bin\Debug\netcoreapp2.2\IdentityDemo.Infrastructure.deps.json
+f:\SourceCode\Research_BackEnd\LDTSolutions\CaseStudy\Identity\IdentityDemo.Infrastructure\bin\Debug\netcoreapp2.2\IdentityDemo.Infrastructure.dll
+f:\SourceCode\Research_BackEnd\LDTSolutions\CaseStudy\Identity\IdentityDemo.Infrastructure\bin\Debug\netcoreapp2.2\IdentityDemo.Infrastructure.pdb
+f:\SourceCode\Research_BackEnd\LDTSolutions\CaseStudy\Identity\IdentityDemo.Infrastructure\obj\Debug\netcoreapp2.2\IdentityDemo.Infrastructure.csprojAssemblyReference.cache
+f:\SourceCode\Research_BackEnd\LDTSolutions\CaseStudy\Identity\IdentityDemo.Infrastructure\obj\Debug\netcoreapp2.2\IdentityDemo.Infrastructure.csproj.CoreCompileInputs.cache
+f:\SourceCode\Research_BackEnd\LDTSolutions\CaseStudy\Identity\IdentityDemo.Infrastructure\obj\Debug\netcoreapp2.2\IdentityDemo.Infrastructure.AssemblyInfoInputs.cache
+f:\SourceCode\Research_BackEnd\LDTSolutions\CaseStudy\Identity\IdentityDemo.Infrastructure\obj\Debug\netcoreapp2.2\IdentityDemo.Infrastructure.AssemblyInfo.cs
+f:\SourceCode\Research_BackEnd\LDTSolutions\CaseStudy\Identity\IdentityDemo.Infrastructure\obj\Debug\netcoreapp2.2\IdentityDemo.Infrastructure.dll
+f:\SourceCode\Research_BackEnd\LDTSolutions\CaseStudy\Identity\IdentityDemo.Infrastructure\obj\Debug\netcoreapp2.2\IdentityDemo.Infrastructure.pdb

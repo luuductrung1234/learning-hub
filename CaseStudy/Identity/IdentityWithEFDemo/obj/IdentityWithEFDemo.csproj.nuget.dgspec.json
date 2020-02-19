@@ -1,0 +1,149 @@
+{
+  "format": 1,
+  "restore": {
+    "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\CaseStudy\\Identity\\IdentityWithEFDemo\\IdentityWithEFDemo.csproj": {}
+  },
+  "projects": {
+    "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\CaseStudy\\Identity\\IdentityDemo.Infrastructure\\IdentityDemo.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\CaseStudy\\Identity\\IdentityDemo.Infrastructure\\IdentityDemo.Infrastructure.csproj",
+        "projectName": "IdentityDemo.Infrastructure",
+        "projectPath": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\CaseStudy\\Identity\\IdentityDemo.Infrastructure\\IdentityDemo.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\luu_trung\\.nuget\\packages\\",
+        "outputPath": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\CaseStudy\\Identity\\IdentityDemo.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\luu_trung\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\ServiceFabricSDK.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\Microsoft SDKs\\Service Fabric\\packages": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://logixtechnology.pkgs.visualstudio.com/_packaging/SalesHubPakages/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[2.2.6, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\CaseStudy\\Identity\\IdentityWithEFDemo\\IdentityWithEFDemo.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\CaseStudy\\Identity\\IdentityWithEFDemo\\IdentityWithEFDemo.csproj",
+        "projectName": "IdentityWithEFDemo",
+        "projectPath": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\CaseStudy\\Identity\\IdentityWithEFDemo\\IdentityWithEFDemo.csproj",
+        "packagesPath": "C:\\Users\\luu_trung\\.nuget\\packages\\",
+        "outputPath": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\CaseStudy\\Identity\\IdentityWithEFDemo\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\luu_trung\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\ServiceFabricSDK.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\Microsoft SDKs\\Service Fabric\\packages": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://logixtechnology.pkgs.visualstudio.com/_packaging/SalesHubPakages/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\CaseStudy\\Identity\\IdentityDemo.Infrastructure\\IdentityDemo.Infrastructure.csproj": {
+                "projectPath": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\CaseStudy\\Identity\\IdentityDemo.Infrastructure\\IdentityDemo.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.AspNetCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.AspNetCore.Razor.Design": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}

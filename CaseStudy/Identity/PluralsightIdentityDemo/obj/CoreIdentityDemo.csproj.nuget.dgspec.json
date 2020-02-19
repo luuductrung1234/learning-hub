@@ -1,0 +1,84 @@
+{
+  "format": 1,
+  "restore": {
+    "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\CaseStudy\\Identity\\PluralsightIdentityDemo\\CoreIdentityDemo.csproj": {}
+  },
+  "projects": {
+    "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\CaseStudy\\Identity\\PluralsightIdentityDemo\\CoreIdentityDemo.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\CaseStudy\\Identity\\PluralsightIdentityDemo\\CoreIdentityDemo.csproj",
+        "projectName": "CoreIdentityDemo",
+        "projectPath": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\CaseStudy\\Identity\\PluralsightIdentityDemo\\CoreIdentityDemo.csproj",
+        "packagesPath": "C:\\Users\\luu_trung\\.nuget\\packages\\",
+        "outputPath": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\CaseStudy\\Identity\\PluralsightIdentityDemo\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\luu_trung\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\ServiceFabricSDK.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\Microsoft SDKs\\Service Fabric\\packages": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://logixtechnology.pkgs.visualstudio.com/_packaging/SalesHubPakages/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.30, )"
+            },
+            "Microsoft.AspNetCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.AspNetCore.Razor.Design": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[2.2.4, )"
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}

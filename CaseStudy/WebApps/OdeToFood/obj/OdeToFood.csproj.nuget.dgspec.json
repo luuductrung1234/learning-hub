@@ -1,0 +1,445 @@
+{
+  "format": 1,
+  "restore": {
+    "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\CaseStudy\\WebApps\\OdeToFood\\OdeToFood.csproj": {}
+  },
+  "projects": {
+    "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\CaseStudy\\WebApps\\OdeToFood.Core\\OdeToFood.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\CaseStudy\\WebApps\\OdeToFood.Core\\OdeToFood.Core.csproj",
+        "projectName": "OdeToFood.Core",
+        "projectPath": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\CaseStudy\\WebApps\\OdeToFood.Core\\OdeToFood.Core.csproj",
+        "packagesPath": "C:\\Users\\luu_trung\\.nuget\\packages\\",
+        "outputPath": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\CaseStudy\\WebApps\\OdeToFood.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\luu_trung\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\ServiceFabricSDK.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\Microsoft SDKs\\Service Fabric\\packages": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://logixtechnology.pkgs.visualstudio.com/_packaging/SalesHubPakages/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\Common\\LDTSolutions.Common.Domain\\LDTSolutions.Common.Domain.csproj": {
+                "projectPath": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\Common\\LDTSolutions.Common.Domain\\LDTSolutions.Common.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\CaseStudy\\WebApps\\OdeToFood.Data\\OdeToFood.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\CaseStudy\\WebApps\\OdeToFood.Data\\OdeToFood.Data.csproj",
+        "projectName": "OdeToFood.Data",
+        "projectPath": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\CaseStudy\\WebApps\\OdeToFood.Data\\OdeToFood.Data.csproj",
+        "packagesPath": "C:\\Users\\luu_trung\\.nuget\\packages\\",
+        "outputPath": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\CaseStudy\\WebApps\\OdeToFood.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\luu_trung\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\ServiceFabricSDK.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\Microsoft SDKs\\Service Fabric\\packages": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://logixtechnology.pkgs.visualstudio.com/_packaging/SalesHubPakages/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\CaseStudy\\WebApps\\OdeToFood.Core\\OdeToFood.Core.csproj": {
+                "projectPath": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\CaseStudy\\WebApps\\OdeToFood.Core\\OdeToFood.Core.csproj"
+              },
+              "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\Common\\LDTSolutions.Common.EntityFrameworkCore\\LDTSolutions.Common.EntityFrameworkCore.csproj": {
+                "projectPath": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\Common\\LDTSolutions.Common.EntityFrameworkCore\\LDTSolutions.Common.EntityFrameworkCore.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[2.2.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "target": "Package",
+              "version": "[2.2.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[2.2.6, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\CaseStudy\\WebApps\\OdeToFood\\OdeToFood.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\CaseStudy\\WebApps\\OdeToFood\\OdeToFood.csproj",
+        "projectName": "OdeToFood",
+        "projectPath": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\CaseStudy\\WebApps\\OdeToFood\\OdeToFood.csproj",
+        "packagesPath": "C:\\Users\\luu_trung\\.nuget\\packages\\",
+        "outputPath": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\CaseStudy\\WebApps\\OdeToFood\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\luu_trung\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\ServiceFabricSDK.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\Microsoft SDKs\\Service Fabric\\packages": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://logixtechnology.pkgs.visualstudio.com/_packaging/SalesHubPakages/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\CaseStudy\\WebApps\\OdeToFood.Data\\OdeToFood.Data.csproj": {
+                "projectPath": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\CaseStudy\\WebApps\\OdeToFood.Data\\OdeToFood.Data.csproj"
+              },
+              "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\Common\\LDTSolutions.Common.WebApi\\LDTSolutions.Common.WebApi.csproj": {
+                "projectPath": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\Common\\LDTSolutions.Common.WebApi\\LDTSolutions.Common.WebApi.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.AspNetCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.AspNetCore.Razor.Design": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.6, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[2.2.4, )"
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\Common\\LDTSolutions.Common.Domain\\LDTSolutions.Common.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\Common\\LDTSolutions.Common.Domain\\LDTSolutions.Common.Domain.csproj",
+        "projectName": "LDTSolutions.Common.Domain",
+        "projectPath": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\Common\\LDTSolutions.Common.Domain\\LDTSolutions.Common.Domain.csproj",
+        "packagesPath": "C:\\Users\\luu_trung\\.nuget\\packages\\",
+        "outputPath": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\Common\\LDTSolutions.Common.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\luu_trung\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\ServiceFabricSDK.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\Microsoft SDKs\\Service Fabric\\packages": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://logixtechnology.pkgs.visualstudio.com/_packaging/SalesHubPakages/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\Common\\LDTSolutions.Common.EntityFrameworkCore\\LDTSolutions.Common.EntityFrameworkCore.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\Common\\LDTSolutions.Common.EntityFrameworkCore\\LDTSolutions.Common.EntityFrameworkCore.csproj",
+        "projectName": "LDTSolutions.Common.EntityFrameworkCore",
+        "projectPath": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\Common\\LDTSolutions.Common.EntityFrameworkCore\\LDTSolutions.Common.EntityFrameworkCore.csproj",
+        "packagesPath": "C:\\Users\\luu_trung\\.nuget\\packages\\",
+        "outputPath": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\Common\\LDTSolutions.Common.EntityFrameworkCore\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\luu_trung\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\ServiceFabricSDK.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\Microsoft SDKs\\Service Fabric\\packages": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://logixtechnology.pkgs.visualstudio.com/_packaging/SalesHubPakages/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\Common\\LDTSolutions.Common.Domain\\LDTSolutions.Common.Domain.csproj": {
+                "projectPath": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\Common\\LDTSolutions.Common.Domain\\LDTSolutions.Common.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[2.2.6, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\Common\\LDTSolutions.Common.WebApi\\LDTSolutions.Common.WebApi.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\Common\\LDTSolutions.Common.WebApi\\LDTSolutions.Common.WebApi.csproj",
+        "projectName": "LDTSolutions.Common.WebApi",
+        "projectPath": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\Common\\LDTSolutions.Common.WebApi\\LDTSolutions.Common.WebApi.csproj",
+        "packagesPath": "C:\\Users\\luu_trung\\.nuget\\packages\\",
+        "outputPath": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\Common\\LDTSolutions.Common.WebApi\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\luu_trung\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\ServiceFabricSDK.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\Microsoft SDKs\\Service Fabric\\packages": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://logixtechnology.pkgs.visualstudio.com/_packaging/SalesHubPakages/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Cors": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Http": {
+              "target": "Package",
+              "version": "[2.2.2, )"
+            },
+            "Microsoft.AspNetCore.Mvc": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Core": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            },
+            "Microsoft.AspNetCore.SignalR": {
+              "target": "Package",
+              "version": "[1.1.0, )"
+            },
+            "Microsoft.AspNetCore.StaticFiles": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.Extensions.FileProviders.Physical": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}

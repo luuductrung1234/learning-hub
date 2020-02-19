@@ -1,0 +1,126 @@
+{
+  "format": 1,
+  "restore": {
+    "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\CaseStudy\\WebApps\\OdeToFood.Core\\OdeToFood.Core.csproj": {}
+  },
+  "projects": {
+    "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\CaseStudy\\WebApps\\OdeToFood.Core\\OdeToFood.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\CaseStudy\\WebApps\\OdeToFood.Core\\OdeToFood.Core.csproj",
+        "projectName": "OdeToFood.Core",
+        "projectPath": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\CaseStudy\\WebApps\\OdeToFood.Core\\OdeToFood.Core.csproj",
+        "packagesPath": "C:\\Users\\luu_trung\\.nuget\\packages\\",
+        "outputPath": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\CaseStudy\\WebApps\\OdeToFood.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\luu_trung\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\ServiceFabricSDK.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\Microsoft SDKs\\Service Fabric\\packages": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://logixtechnology.pkgs.visualstudio.com/_packaging/SalesHubPakages/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\Common\\LDTSolutions.Common.Domain\\LDTSolutions.Common.Domain.csproj": {
+                "projectPath": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\Common\\LDTSolutions.Common.Domain\\LDTSolutions.Common.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\Common\\LDTSolutions.Common.Domain\\LDTSolutions.Common.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\Common\\LDTSolutions.Common.Domain\\LDTSolutions.Common.Domain.csproj",
+        "projectName": "LDTSolutions.Common.Domain",
+        "projectPath": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\Common\\LDTSolutions.Common.Domain\\LDTSolutions.Common.Domain.csproj",
+        "packagesPath": "C:\\Users\\luu_trung\\.nuget\\packages\\",
+        "outputPath": "f:\\SourceCode\\Research_BackEnd\\LDTSolutions\\Common\\LDTSolutions.Common.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\luu_trung\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\ServiceFabricSDK.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\Microsoft SDKs\\Service Fabric\\packages": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://logixtechnology.pkgs.visualstudio.com/_packaging/SalesHubPakages/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}
