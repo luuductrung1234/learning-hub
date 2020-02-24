@@ -222,6 +222,11 @@ https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-client
               </ResponseAssertion>
               <hashTree/>
             </hashTree>
+            <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="true">
+              <collectionProp name="AuthManager.auth_list"/>
+              <boolProp name="AuthManager.controlledByThreadGroup">false</boolProp>
+            </AuthManager>
+            <hashTree/>
           </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request_Get_RetailerProfile" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
