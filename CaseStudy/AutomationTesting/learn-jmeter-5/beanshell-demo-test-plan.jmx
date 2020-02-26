@@ -65,7 +65,7 @@
           </JSR223Assertion>
           <hashTree/>
         </hashTree>
-        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell _Sampler_Array_Sorting" enabled="false">
           <stringProp name="BeanShellSampler.query">/* 
  *  JMeter BeanShell Sampler
  *  
@@ -295,6 +295,21 @@ print(&quot;-------- End ----------&quot;);
           </BeanShellAssertion>
           <hashTree/>
         </hashTree>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell _Sampler_External_Library" enabled="true">
+          <stringProp name="BeanShellSampler.query">import com.ldt.helpers.SimpleHelpers;
+
+SimpleHelpers helper = new SimpleHelpers();
+
+helper.printHelloWorld();
+
+result = helper.sum(1, 1).toString();
+
+SampleResult.setResponseData(result);</stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
         <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
