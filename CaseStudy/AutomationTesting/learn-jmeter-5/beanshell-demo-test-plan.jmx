@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.2.1">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="MessageVar" elementType="Argument">
+            <stringProp name="Argument.name">MessageVar</stringProp>
+            <stringProp name="Argument.value">This is Groovy script!</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Single Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="JSR223 Sampler" enabled="false">
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="script"></stringProp>
+          <stringProp name="scriptLanguage">groovy</stringProp>
+        </JSR223Sampler>
+        <hashTree>
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script"></stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223PreProcessor>
+          <hashTree/>
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script"></stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
+          <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="JSR223 Assertion" enabled="true">
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script"></stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223Assertion>
+          <hashTree/>
+        </hashTree>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell _Sampler_Array_Sorting" enabled="false">
+          <stringProp name="BeanShellSampler.query">/* 
+ *  JMeter BeanShell Sampler
+ *  
+ * -------------------------------------------------------------------------------
+ * VARIABLES
+ * In beanshell (even JSR Framework) provided variables:
+ * ctx	       It holds context information about the current thread that includes sampler and its results.
+ * args          variable will hold the parameters as string array (specified in Parameters field above)
+ * vars       	  This is a thread local set of variables stored in a map used by BeanShell components in the same thread.
+ * props	       These are variables loaded as properties from an external file (jmeter.properties) stored in the classpath.
+ * prev	       It holds the last result from the sampler
+ * data	       It holds server response data
+ * SampleResult  It holds server response data
+ * 
+ * -------------------------------------------------------------------------------
+ * Article Link:
+ * https://examples.javacodegeeks.com/enterprise-java/apache-jmeter/jmeter-beanshell-example/
+ * 
+ */
+
+// $(_groovy(&quot;${MessageVar}&quot;.substring(0,11)))
+
+// Groovy can run command line and print the result as a text
+// log.info(&quot;ipconfig&quot;.execute().text)
+
+print(&quot;sampler&quot;);
+
+// get variable from vars
+strArray = vars.getObject(&quot;strArray&quot;);
+
+// Using build-in Arrays class (utility class provided by the JDK)
+Arrays.sort(strArray);
+str = Arrays.toString(strArray);
+print(str);
+
+vars.putObject(&quot;strArray&quot;, str);
+
+// set the result to SampleResult object
+SampleResult.setResponseData(str);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree>
+          <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor" enabled="true">
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="script">/* 
+ *  JMeter BeanShell PreProcessor
+ *  
+ * -------------------------------------------------------------------------------
+ * VARIABLES
+ * In beanshell (even JSR Framework) provided variables:
+ * ctx	       It holds context information about the current thread that includes sampler and its results.
+ * args          variable will hold the parameters as string array (specified in Parameters field above)
+ * vars       	  This is a thread local set of variables stored in a map used by BeanShell components in the same thread.
+ * props	       These are variables loaded as properties from an external file (jmeter.properties) stored in the classpath.
+ * prev	       It holds the last result from the sampler
+ * data	       It holds server response data
+ * SampleResult  It holds server response data
+ * 
+ * -------------------------------------------------------------------------------
+ * Article Link:
+ * https://examples.javacodegeeks.com/enterprise-java/apache-jmeter/jmeter-beanshell-example/
+ * 
+ */
+
+
+
+print(&quot;-------- Start ----------&quot;);
+print(&quot;pre-processor&quot;);
+strArray = new String[] {&quot;e&quot;, &quot;d&quot;, &quot;c&quot;, &quot;a&quot;, &quot;b&quot;};
+vars.putObject(&quot;strArray&quot;, strArray);
+
+
+
+
+
+
+
+
+
+
+</stringProp>
+          </BeanShellPreProcessor>
+          <hashTree/>
+          <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="script">/* 
+ *  JMeter BeanShell PostProcessor
+ *  
+ * -------------------------------------------------------------------------------
+ * VARIABLES
+ * In beanshell (even JSR Framework) provided variables:
+ * ctx	       It holds context information about the current thread that includes sampler and its results.
+ * args          variable will hold the parameters as string array (specified in Parameters field above)
+ * vars       	  This is a thread local set of variables stored in a map used by BeanShell components in the same thread.
+ * props	       These are variables loaded as properties from an external file (jmeter.properties) stored in the classpath.
+ * prev	       It holds the last result from the sampler
+ * data	       It holds server response data
+ * SampleResult  It holds server response data
+ * 
+ * -------------------------------------------------------------------------------
+ * Article Link:
+ * https://examples.javacodegeeks.com/enterprise-java/apache-jmeter/jmeter-beanshell-example/
+ * 
+ */
+
+print(&quot;post-processor&quot;);
+
+str = prev.getResponseDataAsString();
+
+str = str.replace(&quot;, &quot;, &quot;&quot;).replace(&quot;[&quot;, &quot;&quot;).replace(&quot;]&quot;, &quot;&quot;);
+
+print(str);
+
+vars.put(&quot;finalString&quot;, str);
+
+
+
+
+
+
+
+</stringProp>
+          </BeanShellPostProcessor>
+          <hashTree/>
+          <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+            <stringProp name="BeanShellAssertion.query">/* 
+ *  JMeter BeanShell Assertion
+ *  
+ * -------------------------------------------------------------------------------
+ * VARIABLES
+ * In beanshell (even JSR Framework) provided variables:
+ * ctx	       It holds context information about the current thread that includes sampler and its results.
+ * args          variable will hold the parameters as string array (specified in Parameters field above)
+ * vars       	  This is a thread local set of variables stored in a map used by BeanShell components in the same thread.
+ * props	       These are variables loaded as properties from an external file (jmeter.properties) stored in the classpath.
+ * prev	       It holds the last result from the sampler
+ * data	       It holds server response data
+ * SampleResult  It holds server response data
+ * AssertResult  It holds assertion result
+ * 
+ * -------------------------------------------------------------------------------
+ * Article Link:
+ * https://examples.javacodegeeks.com/enterprise-java/apache-jmeter/jmeter-beanshell-example/
+ * 
+ */
+
+ 
+print(&quot;assertion&quot;);
+
+finalString = vars.get(&quot;finalString&quot;);
+
+if(!finalString.equals(&quot;abcde&quot;)) {
+	Failure=true;
+	FailureMessage = &quot;Not a valid string&quot;;
+	log.warn(finalString);
+}
+
+print(&quot;-------- End ----------&quot;);
+
+
+
+
+
+
+
+
+
+
+
+
+</stringProp>
+            <stringProp name="BeanShellAssertion.filename"></stringProp>
+            <stringProp name="BeanShellAssertion.parameters"></stringProp>
+            <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+          </BeanShellAssertion>
+          <hashTree/>
+        </hashTree>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell _Sampler_External_Library" enabled="true">
+          <stringProp name="BeanShellSampler.query">import com.ldt.helpers.SimpleHelpers;
+
+SimpleHelpers helper = new SimpleHelpers();
+
+helper.printHelloWorld();
+
+result = helper.sum(1, 1).toString();
+
+SampleResult.setResponseData(result);</stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
