@@ -1,0 +1,67 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "solution init",
+            "type": "shell",
+            "group": "none",
+            "command": "./scripts/solution-init.sh",
+            "windows": {
+                "command": "./scripts/solution-init.bat",
+            },
+            "args": [],
+            "problemMatcher": []
+        },
+        {
+            "label": "solution attach",
+            "type": "shell",
+            "group": "none",
+            "command": "./scripts/solution-attach.sh",
+            "windows": {
+                "command": "./scripts/solution-attach.bat",
+            },
+            "args": [],
+            "problemMatcher": []
+        },
+        {
+            "label": "solution setup",
+            "dependsOrder": "sequence",
+            "dependsOn": ["solution init", "solution attach"]
+        },
+        {
+            "label": "solution build",
+            "type": "shell",
+            "group": "build",
+            "command": "./scripts/solution-build.sh",
+            "windows": {
+                "command": "./scripts/solution-build.bat",
+            },
+            "args": [],
+            "problemMatcher": []
+        },
+        {
+            "label": "solution clean",
+            "type": "shell",
+            "group": "build",
+            "command": "./scripts/solution-clean.sh",
+            "windows": {
+                "command": "./scripts/solution-clean.bat",
+            },
+            "args": [],
+            "problemMatcher": []
+        },
+        {
+            "label": "solution detach",
+            "type": "shell",
+            "group": "none",
+            "command": "./scripts/solution-detach.sh",
+            "windows": {
+                "command": "./scripts/solution-detach.bat",
+            },
+            "args": [],
+            "problemMatcher": []
+        }
+    ]
+}
