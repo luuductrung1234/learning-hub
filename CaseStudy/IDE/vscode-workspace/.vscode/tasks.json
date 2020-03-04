@@ -12,7 +12,10 @@
                 "command": "./scripts/simple/solution-init.bat",
             },
             "args": [],
-            "problemMatcher": []
+            "problemMatcher": [],
+            "presentation": {
+                "showReuseMessage": false,
+            }
         },
         {
             "label": "simple solution attach",
@@ -23,12 +26,18 @@
                 "command": "./scripts/simple/solution-attach.bat",
             },
             "args": [],
-            "problemMatcher": []
+            "problemMatcher": [],
+            "presentation": {
+                "showReuseMessage": false,
+            }
         },
         {
             "label": "simple solution setup",
             "dependsOrder": "sequence",
-            "dependsOn": ["simple solution init", "simple solution attach"]
+            "dependsOn": ["simple solution init", "simple solution attach"],
+            "presentation": {
+                "showReuseMessage": false,
+            }
         },
         {
             "label": "simple solution build",
