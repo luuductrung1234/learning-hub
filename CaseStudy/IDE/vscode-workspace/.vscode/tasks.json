@@ -6,6 +6,7 @@
         {
             "label": "simple solution init",
             "type": "shell",
+            "detail": "not attach",
             "group": "none",
             "command": "./scripts/simple/solution-init.sh",
             "windows": {
@@ -20,6 +21,7 @@
         {
             "label": "simple solution attach",
             "type": "shell",
+            "detail": "not init",
             "group": "none",
             "command": "./scripts/simple/solution-attach.sh",
             "windows": {
@@ -33,6 +35,7 @@
         },
         {
             "label": "simple solution setup",
+            "detail": "first init, then attach",
             "dependsOrder": "sequence",
             "dependsOn": ["simple solution init", "simple solution attach"],
             "problemMatcher": [],
@@ -43,6 +46,7 @@
         {
             "label": "simple solution build",
             "type": "shell",
+            "detail": "require setup",
             "group": "build",
             "command": "./scripts/simple/solution-build.sh",
             "windows": {
@@ -68,6 +72,7 @@
         {
             "label": "simple solution clean",
             "type": "shell",
+            "detail": "require setup",
             "group": "build",
             "command": "./scripts/simple/solution-clean.sh",
             "windows": {
@@ -89,6 +94,7 @@
         {
             "label": "simple solution detach",
             "type": "shell",
+            "detail": "require setup",
             "group": "none",
             "command": "./scripts/simple/solution-detach.sh",
             "windows": {
