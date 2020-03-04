@@ -13,6 +13,14 @@ namespace simple_api
     {
         public static void Main(string[] args)
         {
+            if (args.Count() >= 2)
+            {
+                if (args[0].Equals("--ide-runner"))
+                {
+                    System.Console.WriteLine($">>>>>>>> This API running on {args[1]}");
+                }
+            }
+
             CreateHostBuilder(args).Build().Run();
         }
 
