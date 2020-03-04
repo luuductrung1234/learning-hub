@@ -4,39 +4,39 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "solution init",
+            "label": "simple solution init",
             "type": "shell",
             "group": "none",
-            "command": "./scripts/solution-init.sh",
+            "command": "./scripts/simple/solution-init.sh",
             "windows": {
-                "command": "./scripts/solution-init.bat",
+                "command": "./scripts/simple/solution-init.bat",
             },
             "args": [],
             "problemMatcher": []
         },
         {
-            "label": "solution attach",
+            "label": "simple solution attach",
             "type": "shell",
             "group": "none",
-            "command": "./scripts/solution-attach.sh",
+            "command": "./scripts/simple/solution-attach.sh",
             "windows": {
-                "command": "./scripts/solution-attach.bat",
+                "command": "./scripts/simple/solution-attach.bat",
             },
             "args": [],
             "problemMatcher": []
         },
         {
-            "label": "solution setup",
+            "label": "simple solution setup",
             "dependsOrder": "sequence",
-            "dependsOn": ["solution init", "solution attach"]
+            "dependsOn": ["simple solution init", "simple solution attach"]
         },
         {
-            "label": "build",
+            "label": "simple solution build",
             "type": "shell",
             "group": "build",
-            "command": "./scripts/solution-build.sh",
+            "command": "./scripts/simple/solution-build.sh",
             "windows": {
-                "command": "./scripts/solution-build.bat",
+                "command": "./scripts/simple/solution-build.bat",
             },
             "args": [],
             "problemMatcher": [
@@ -56,12 +56,12 @@
             }
         },
         {
-            "label": "clean",
+            "label": "simple solution clean",
             "type": "shell",
             "group": "build",
-            "command": "./scripts/solution-clean.sh",
+            "command": "./scripts/simple/solution-clean.sh",
             "windows": {
-                "command": "./scripts/solution-clean.bat",
+                "command": "./scripts/simple/solution-clean.bat",
             },
             "args": [],
             "problemMatcher": [
@@ -77,12 +77,12 @@
             }
         },
         {
-            "label": "solution detach",
+            "label": "simple solution detach",
             "type": "shell",
             "group": "none",
-            "command": "./scripts/solution-detach.sh",
+            "command": "./scripts/simple/solution-detach.sh",
             "windows": {
-                "command": "./scripts/solution-detach.bat",
+                "command": "./scripts/simple/solution-detach.bat",
             },
             "args": [],
             "problemMatcher": []

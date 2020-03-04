@@ -6,17 +6,17 @@
    "version": "0.2.0",
    "configurations": [
         {
-            "name": ".NET Core Launch (web)",
+            "name": "Simple API Launch",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build",
+            "preLaunchTask": "simple solution build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/simple-api/bin/Debug/netcoreapp3.1/simple-api.dll",
+            "program": "${workspaceFolder}/simple/simple-api/bin/Debug/netcoreapp3.1/simple-api.dll",
             "args": [
                 "--ide-runner",
                 "vscode"
             ],
-            "cwd": "${workspaceFolder}/simple-api",
+            "cwd": "${workspaceFolder}/simple/simple-api",
             "stopAtEntry": false,
             // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
             "serverReadyAction": {
@@ -27,7 +27,7 @@
                 "ASPNETCORE_ENVIRONMENT": "Development"
             },
             "sourceFileMap": {
-                "/Views": "${workspaceFolder}/Views"
+                "/Views": "${workspaceFolder}/simple/Views"
             }
         },
         {
