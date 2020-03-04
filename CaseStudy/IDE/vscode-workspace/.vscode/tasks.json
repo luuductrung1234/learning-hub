@@ -31,7 +31,7 @@
             "dependsOn": ["solution init", "solution attach"]
         },
         {
-            "label": "solution build",
+            "label": "build",
             "type": "shell",
             "group": "build",
             "command": "./scripts/solution-build.sh",
@@ -39,10 +39,24 @@
                 "command": "./scripts/solution-build.bat",
             },
             "args": [],
-            "problemMatcher": []
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": true
+            },
+            "runOptions": {
+                "reevaluateOnRerun": true,
+                "runOn": "folderOpen"
+            }
         },
         {
-            "label": "solution clean",
+            "label": "clean",
             "type": "shell",
             "group": "build",
             "command": "./scripts/solution-clean.sh",
@@ -50,7 +64,17 @@
                 "command": "./scripts/solution-clean.bat",
             },
             "args": [],
-            "problemMatcher": []
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": false
+            }
         },
         {
             "label": "solution detach",
