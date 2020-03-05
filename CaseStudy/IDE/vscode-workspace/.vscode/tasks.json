@@ -1,0 +1,107 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "simple solution init",
+            "type": "shell",
+            "detail": "not attach",
+            "group": "none",
+            "command": "./scripts/simple/solution-init.sh",
+            "windows": {
+                "command": "./scripts/simple/solution-init.bat",
+            },
+            "args": [],
+            "problemMatcher": [],
+            "presentation": {
+                "showReuseMessage": false,
+            }
+        },
+        {
+            "label": "simple solution attach",
+            "type": "shell",
+            "detail": "not init",
+            "group": "none",
+            "command": "./scripts/simple/solution-attach.sh",
+            "windows": {
+                "command": "./scripts/simple/solution-attach.bat",
+            },
+            "args": [],
+            "problemMatcher": [],
+            "presentation": {
+                "showReuseMessage": false,
+            }
+        },
+        {
+            "label": "simple solution setup",
+            "detail": "first init, then attach",
+            "dependsOrder": "sequence",
+            "dependsOn": ["simple solution init", "simple solution attach"],
+            "problemMatcher": [],
+            "presentation": {
+                "showReuseMessage": false,
+            }
+        },
+        {
+            "label": "simple solution build",
+            "type": "shell",
+            "detail": "require setup",
+            "group": "build",
+            "command": "./scripts/simple/solution-build.sh",
+            "windows": {
+                "command": "./scripts/simple/solution-build.bat",
+            },
+            "args": [],
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": true
+            },
+            "runOptions": {
+                "reevaluateOnRerun": true,
+                "runOn": "folderOpen"
+            }
+        },
+        {
+            "label": "simple solution clean",
+            "type": "shell",
+            "detail": "require setup",
+            "group": "build",
+            "command": "./scripts/simple/solution-clean.sh",
+            "windows": {
+                "command": "./scripts/simple/solution-clean.bat",
+            },
+            "args": [],
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": false
+            }
+        },
+        {
+            "label": "simple solution detach",
+            "type": "shell",
+            "detail": "require setup",
+            "group": "none",
+            "command": "./scripts/simple/solution-detach.sh",
+            "windows": {
+                "command": "./scripts/simple/solution-detach.bat",
+            },
+            "args": [],
+            "problemMatcher": []
+        }
+    ]
+}
