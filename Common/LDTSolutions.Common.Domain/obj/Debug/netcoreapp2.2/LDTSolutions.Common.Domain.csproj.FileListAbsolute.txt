@@ -1,0 +1,9 @@
+f:\SourceCode\Research_BackEnd\LDTSolutions\Common\LDTSolutions.Common.Domain\bin\Debug\netcoreapp2.2\LDTSolutions.Common.Domain.deps.json
+f:\SourceCode\Research_BackEnd\LDTSolutions\Common\LDTSolutions.Common.Domain\bin\Debug\netcoreapp2.2\LDTSolutions.Common.Domain.dll
+f:\SourceCode\Research_BackEnd\LDTSolutions\Common\LDTSolutions.Common.Domain\bin\Debug\netcoreapp2.2\LDTSolutions.Common.Domain.pdb
+f:\SourceCode\Research_BackEnd\LDTSolutions\Common\LDTSolutions.Common.Domain\obj\Debug\netcoreapp2.2\LDTSolutions.Common.Domain.csprojAssemblyReference.cache
+f:\SourceCode\Research_BackEnd\LDTSolutions\Common\LDTSolutions.Common.Domain\obj\Debug\netcoreapp2.2\LDTSolutions.Common.Domain.csproj.CoreCompileInputs.cache
+f:\SourceCode\Research_BackEnd\LDTSolutions\Common\LDTSolutions.Common.Domain\obj\Debug\netcoreapp2.2\LDTSolutions.Common.Domain.AssemblyInfoInputs.cache
+f:\SourceCode\Research_BackEnd\LDTSolutions\Common\LDTSolutions.Common.Domain\obj\Debug\netcoreapp2.2\LDTSolutions.Common.Domain.AssemblyInfo.cs
+f:\SourceCode\Research_BackEnd\LDTSolutions\Common\LDTSolutions.Common.Domain\obj\Debug\netcoreapp2.2\LDTSolutions.Common.Domain.dll
+f:\SourceCode\Research_BackEnd\LDTSolutions\Common\LDTSolutions.Common.Domain\obj\Debug\netcoreapp2.2\LDTSolutions.Common.Domain.pdb

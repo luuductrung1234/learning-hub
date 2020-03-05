@@ -1,0 +1,9 @@
+f:\SourceCode\Research_BackEnd\LDTSolutions\Common\LDTSolutions.Common.Identity\bin\Debug\netcoreapp2.2\LDTSolutions.Common.Identity.deps.json
+f:\SourceCode\Research_BackEnd\LDTSolutions\Common\LDTSolutions.Common.Identity\bin\Debug\netcoreapp2.2\LDTSolutions.Common.Identity.dll
+f:\SourceCode\Research_BackEnd\LDTSolutions\Common\LDTSolutions.Common.Identity\bin\Debug\netcoreapp2.2\LDTSolutions.Common.Identity.pdb
+f:\SourceCode\Research_BackEnd\LDTSolutions\Common\LDTSolutions.Common.Identity\obj\Debug\netcoreapp2.2\LDTSolutions.Common.Identity.csprojAssemblyReference.cache
+f:\SourceCode\Research_BackEnd\LDTSolutions\Common\LDTSolutions.Common.Identity\obj\Debug\netcoreapp2.2\LDTSolutions.Common.Identity.csproj.CoreCompileInputs.cache
+f:\SourceCode\Research_BackEnd\LDTSolutions\Common\LDTSolutions.Common.Identity\obj\Debug\netcoreapp2.2\LDTSolutions.Common.Identity.AssemblyInfoInputs.cache
+f:\SourceCode\Research_BackEnd\LDTSolutions\Common\LDTSolutions.Common.Identity\obj\Debug\netcoreapp2.2\LDTSolutions.Common.Identity.AssemblyInfo.cs
+f:\SourceCode\Research_BackEnd\LDTSolutions\Common\LDTSolutions.Common.Identity\obj\Debug\netcoreapp2.2\LDTSolutions.Common.Identity.dll
+f:\SourceCode\Research_BackEnd\LDTSolutions\Common\LDTSolutions.Common.Identity\obj\Debug\netcoreapp2.2\LDTSolutions.Common.Identity.pdb
