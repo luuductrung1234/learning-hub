@@ -1,0 +1,17 @@
+{
+  "name": "generator-ldtsfcsharp",
+  "version": "1.0.0",
+  "description": "my yeoman generator for Service Fabric's csharp application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "author": "ldt",
+  "license": "ISC",
+  "dependencies": {
+    "yeoman-generator": "^4.6.0"
+  }
+}
