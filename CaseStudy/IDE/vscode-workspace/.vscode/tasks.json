@@ -8,7 +8,7 @@
             "type": "shell",
             "detail": "not attach",
             "group": "none",
-            "command": "./scripts/simple/solution-init.sh",
+            "command": "sh ./scripts/simple/solution-init.sh",
             "windows": {
                 "command": "./scripts/simple/solution-init.bat",
             },
@@ -23,7 +23,7 @@
             "type": "shell",
             "detail": "not init",
             "group": "none",
-            "command": "./scripts/simple/solution-attach.sh",
+            "command": "sh ./scripts/simple/solution-attach.sh",
             "windows": {
                 "command": "./scripts/simple/solution-attach.bat",
             },
@@ -48,7 +48,7 @@
             "type": "shell",
             "detail": "require setup",
             "group": "build",
-            "command": "./scripts/simple/solution-build.sh",
+            "command": "sh ./scripts/simple/solution-build.sh",
             "windows": {
                 "command": "./scripts/simple/solution-build.bat",
             },
@@ -74,7 +74,7 @@
             "type": "shell",
             "detail": "require setup",
             "group": "build",
-            "command": "./scripts/simple/solution-clean.sh",
+            "command": "sh ./scripts/simple/solution-clean.sh",
             "windows": {
                 "command": "./scripts/simple/solution-clean.bat",
             },
@@ -96,7 +96,7 @@
             "type": "shell",
             "detail": "require setup",
             "group": "none",
-            "command": "./scripts/simple/solution-detach.sh",
+            "command": "sh ./scripts/simple/solution-detach.sh",
             "windows": {
                 "command": "./scripts/simple/solution-detach.bat",
             },
