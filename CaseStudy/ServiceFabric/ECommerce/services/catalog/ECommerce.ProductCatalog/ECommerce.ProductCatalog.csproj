@@ -14,6 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ECommerce.ProductCatalog.Infrastructure\ECommerce.ProductCatalog.Infrastructure.csproj" />
+    <ProjectReference Include="..\ECommerce.ProductCatalog.Interfaces\ECommerce.ProductCatalog.Interfaces.csproj" />
     <ProjectReference Include="..\ECommerce.ProductCatalog.Model\ECommerce.ProductCatalog.Model.csproj" />
   </ItemGroup>
 

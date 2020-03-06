@@ -4,6 +4,8 @@ using System.Fabric;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using ECommerce.ProductCatalog.Infrastructure;
+using ECommerce.ProductCatalog.Interfaces;
 using ECommerce.ProductCatalog.Model;
 using Microsoft.ServiceFabric.Data.Collections;
 using Microsoft.ServiceFabric.Services.Communication.Runtime;
@@ -23,20 +25,7 @@ namespace ECommerce.ProductCatalog
             : base(context)
         { }
 
-        public async Task AddProduct(Product product)
-        {
-            await _productRepository.AddProduct(product);
-        }
-
-        public async Task<Product[]> GetAllProducts()
-        {
-            // tranforms a IEnumerable to array
-            // Service Fabric remoting doesn't understand IEnumberable 
-            // because it need to transfer the results over the network
-            //  - Interfaces can not be serialized.
-            //  - All the types involved in methods that are called over the network must be simple types (e.g. array).
-            return (await _productRepository.GetAllProducts()).ToArray();
-        }
+        #region Setup Methods
 
         /// <summary>
         /// Optional override to create listeners (e.g., HTTP, Service Remoting, WCF, etc.) for this service replica to handle client or user requests.
@@ -100,5 +89,26 @@ namespace ECommerce.ProductCatalog
 
             IEnumerable<Product> all = await _productRepository.GetAllProducts();
         }
+
+        #endregion
+
+        #region Business Methods
+
+        public async Task AddProductAsync(Product product)
+        {
+            await _productRepository.AddProduct(product);
+        }
+
+        public async Task<Product[]> GetAllProductsAsync()
+        {
+            // tranforms a IEnumerable to array
+            // Service Fabric remoting doesn't understand IEnumberable 
+            // because it need to transfer the results over the network
+            //  - Interfaces can not be serialized.
+            //  - All the types involved in methods that are called over the network must be simple types (e.g. array).
+            return (await _productRepository.GetAllProducts()).ToArray();
+        }
+
+        #endregion
     }
 }
