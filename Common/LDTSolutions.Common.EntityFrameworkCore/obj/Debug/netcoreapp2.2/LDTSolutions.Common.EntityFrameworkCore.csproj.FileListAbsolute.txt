@@ -1,0 +1,12 @@
+f:\SourceCode\Research_BackEnd\LDTSolutions\Common\LDTSolutions.Common.EntityFrameworkCore\bin\Debug\netcoreapp2.2\LDTSolutions.Common.EntityFrameworkCore.deps.json
+f:\SourceCode\Research_BackEnd\LDTSolutions\Common\LDTSolutions.Common.EntityFrameworkCore\bin\Debug\netcoreapp2.2\LDTSolutions.Common.EntityFrameworkCore.dll
+f:\SourceCode\Research_BackEnd\LDTSolutions\Common\LDTSolutions.Common.EntityFrameworkCore\bin\Debug\netcoreapp2.2\LDTSolutions.Common.EntityFrameworkCore.pdb
+f:\SourceCode\Research_BackEnd\LDTSolutions\Common\LDTSolutions.Common.EntityFrameworkCore\bin\Debug\netcoreapp2.2\LDTSolutions.Common.Domain.dll
+f:\SourceCode\Research_BackEnd\LDTSolutions\Common\LDTSolutions.Common.EntityFrameworkCore\bin\Debug\netcoreapp2.2\LDTSolutions.Common.Domain.pdb
+f:\SourceCode\Research_BackEnd\LDTSolutions\Common\LDTSolutions.Common.EntityFrameworkCore\obj\Debug\netcoreapp2.2\LDTSolutions.Common.EntityFrameworkCore.csprojAssemblyReference.cache
+f:\SourceCode\Research_BackEnd\LDTSolutions\Common\LDTSolutions.Common.EntityFrameworkCore\obj\Debug\netcoreapp2.2\LDTSolutions.Common.EntityFrameworkCore.csproj.CoreCompileInputs.cache
+f:\SourceCode\Research_BackEnd\LDTSolutions\Common\LDTSolutions.Common.EntityFrameworkCore\obj\Debug\netcoreapp2.2\LDTSolutions.Common.EntityFrameworkCore.AssemblyInfoInputs.cache
+f:\SourceCode\Research_BackEnd\LDTSolutions\Common\LDTSolutions.Common.EntityFrameworkCore\obj\Debug\netcoreapp2.2\LDTSolutions.Common.EntityFrameworkCore.AssemblyInfo.cs
+f:\SourceCode\Research_BackEnd\LDTSolutions\Common\LDTSolutions.Common.EntityFrameworkCore\obj\Debug\netcoreapp2.2\LDTSolutions.Common.EntityFrameworkCore.csproj.CopyComplete
+f:\SourceCode\Research_BackEnd\LDTSolutions\Common\LDTSolutions.Common.EntityFrameworkCore\obj\Debug\netcoreapp2.2\LDTSolutions.Common.EntityFrameworkCore.dll
+f:\SourceCode\Research_BackEnd\LDTSolutions\Common\LDTSolutions.Common.EntityFrameworkCore\obj\Debug\netcoreapp2.2\LDTSolutions.Common.EntityFrameworkCore.pdb
