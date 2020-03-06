@@ -190,7 +190,6 @@ ClientBin/
 *.dbproj.schemaview
 *.pfx
 *.publishsettings
-package-lock.json
 node_modules/
 orleans.codegen.cs
 

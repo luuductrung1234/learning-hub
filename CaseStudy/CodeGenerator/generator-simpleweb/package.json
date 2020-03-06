@@ -1,7 +1,7 @@
 {
-    "name": "generator-ldtsfcsharp",
+    "name": "generator-simpleweb",
     "version": "1.0.0",
-    "description": "yeoman generator for Azure Service Fabric's Csharp application",
+    "description": "yeoman generator for simple web application",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
