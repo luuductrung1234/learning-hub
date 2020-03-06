@@ -32,6 +32,7 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\actors\ECommerce.UserActor\ECommerce.UserActor.csproj" />
     <ProjectReference Include="..\apiGateways\ECommerce.API\ECommerce.API.csproj">
       <ServiceLaunchUrl>http://{MachineName}:{ServicePort}/api/values</ServiceLaunchUrl>
     </ProjectReference>
