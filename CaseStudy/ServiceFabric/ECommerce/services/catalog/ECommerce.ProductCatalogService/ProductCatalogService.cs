@@ -12,16 +12,16 @@ using Microsoft.ServiceFabric.Services.Communication.Runtime;
 using Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime;
 using Microsoft.ServiceFabric.Services.Runtime;
 
-namespace ECommerce.ProductCatalog
+namespace ECommerce.ProductCatalogService
 {
     /// <summary>
     /// An instance of this class is created for each service replica by the Service Fabric runtime.
     /// </summary>
-    internal sealed class ProductCatalog : StatefulService, IProductCatalogService
+    internal sealed class ProductCatalogService : StatefulService, IProductCatalogService
     {
         private IProductRepository _productRepository;
 
-        public ProductCatalog(StatefulServiceContext context)
+        public ProductCatalogService(StatefulServiceContext context)
             : base(context)
         { }
 
@@ -38,7 +38,7 @@ namespace ECommerce.ProductCatalog
         {
             return new[]
             {
-                new ServiceReplicaListener(context => 
+                new ServiceReplicaListener(context =>
                     new FabricTransportServiceRemotingListener(context, this))
             };
         }

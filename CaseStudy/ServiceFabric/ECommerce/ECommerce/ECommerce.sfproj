@@ -32,10 +32,11 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\actors\ECommerce.UserActor\ECommerce.UserActor.csproj" />
     <ProjectReference Include="..\apiGateways\ECommerce.API\ECommerce.API.csproj">
       <ServiceLaunchUrl>http://{MachineName}:{ServicePort}/api/values</ServiceLaunchUrl>
     </ProjectReference>
-    <ProjectReference Include="..\services\catalog\ECommerce.ProductCatalog\ECommerce.ProductCatalog.csproj" />
+    <ProjectReference Include="..\services\catalog\ECommerce.ProductCatalogService\ECommerce.ProductCatalogService.csproj" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
   <PropertyGroup>

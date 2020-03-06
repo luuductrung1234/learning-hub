@@ -1,4 +1,5 @@
-﻿using Microsoft.ServiceFabric.Data;
+﻿using ECommerce.ProductCatalog.Model;
+using Microsoft.ServiceFabric.Data;
 using Microsoft.ServiceFabric.Data.Collections;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ECommerce.ProductCatalog.Model
+namespace ECommerce.ProductCatalog.Infrastructure
 {
     public class ServiceFabricProductRepository : IProductRepository
     {
