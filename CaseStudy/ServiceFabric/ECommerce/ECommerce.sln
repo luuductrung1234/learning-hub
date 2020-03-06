@@ -9,8 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{0D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "catalog", "catalog", "{794E5EB6-B6E0-4C57-82D0-B329DFE3E849}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerce.ProductCatalog", "services\catalog\ECommerce.ProductCatalog\ECommerce.ProductCatalog.csproj", "{92118D66-4926-40E9-904C-046B046FD543}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerce.ProductCatalog.Model", "services\catalog\ECommerce.ProductCatalog.Model\ECommerce.ProductCatalog.Model.csproj", "{8B5B2EDF-0770-4F1C-B887-2E43B6FF265E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "apiGateways", "apiGateways", "{CB787C86-6C8B-416F-8C1B-E2E9AE42F1C6}"
@@ -22,9 +20,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.ProductCatalog.Interfaces", "services\catalog\ECommerce.ProductCatalog.Interfaces\ECommerce.ProductCatalog.Interfaces.csproj", "{04808908-4373-481A-9C29-BD9BA74C8C72}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerce.ProductCatalog.Interfaces", "services\catalog\ECommerce.ProductCatalog.Interfaces\ECommerce.ProductCatalog.Interfaces.csproj", "{04808908-4373-481A-9C29-BD9BA74C8C72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.ProductCatalog.Infrastructure", "services\catalog\ECommerce.ProductCatalog.Infrastructure\ECommerce.ProductCatalog.Infrastructure.csproj", "{127DDA5B-4C60-4669-A64F-4604135066E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerce.ProductCatalog.Infrastructure", "services\catalog\ECommerce.ProductCatalog.Infrastructure\ECommerce.ProductCatalog.Infrastructure.csproj", "{127DDA5B-4C60-4669-A64F-4604135066E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.ProductCatalogService", "services\catalog\ECommerce.ProductCatalogService\ECommerce.ProductCatalogService.csproj", "{87F48DCC-EAF2-465A-82C9-D14ECEA7C068}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,14 +42,6 @@ Global
 		{61EA7683-7FA5-44AE-A53E-F9B5C8542A8C}.Release|x64.ActiveCfg = Release|x64
 		{61EA7683-7FA5-44AE-A53E-F9B5C8542A8C}.Release|x64.Build.0 = Release|x64
 		{61EA7683-7FA5-44AE-A53E-F9B5C8542A8C}.Release|x64.Deploy.0 = Release|x64
-		{92118D66-4926-40E9-904C-046B046FD543}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{92118D66-4926-40E9-904C-046B046FD543}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{92118D66-4926-40E9-904C-046B046FD543}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{92118D66-4926-40E9-904C-046B046FD543}.Debug|x64.Build.0 = Debug|Any CPU
-		{92118D66-4926-40E9-904C-046B046FD543}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{92118D66-4926-40E9-904C-046B046FD543}.Release|Any CPU.Build.0 = Release|Any CPU
-		{92118D66-4926-40E9-904C-046B046FD543}.Release|x64.ActiveCfg = Release|Any CPU
-		{92118D66-4926-40E9-904C-046B046FD543}.Release|x64.Build.0 = Release|Any CPU
 		{8B5B2EDF-0770-4F1C-B887-2E43B6FF265E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8B5B2EDF-0770-4F1C-B887-2E43B6FF265E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B5B2EDF-0770-4F1C-B887-2E43B6FF265E}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -82,17 +74,25 @@ Global
 		{127DDA5B-4C60-4669-A64F-4604135066E5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{127DDA5B-4C60-4669-A64F-4604135066E5}.Release|x64.ActiveCfg = Release|Any CPU
 		{127DDA5B-4C60-4669-A64F-4604135066E5}.Release|x64.Build.0 = Release|Any CPU
+		{87F48DCC-EAF2-465A-82C9-D14ECEA7C068}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87F48DCC-EAF2-465A-82C9-D14ECEA7C068}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87F48DCC-EAF2-465A-82C9-D14ECEA7C068}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{87F48DCC-EAF2-465A-82C9-D14ECEA7C068}.Debug|x64.Build.0 = Debug|Any CPU
+		{87F48DCC-EAF2-465A-82C9-D14ECEA7C068}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87F48DCC-EAF2-465A-82C9-D14ECEA7C068}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87F48DCC-EAF2-465A-82C9-D14ECEA7C068}.Release|x64.ActiveCfg = Release|Any CPU
+		{87F48DCC-EAF2-465A-82C9-D14ECEA7C068}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{794E5EB6-B6E0-4C57-82D0-B329DFE3E849} = {0D4DD55F-5870-4B70-B406-464B2F9D30CE}
-		{92118D66-4926-40E9-904C-046B046FD543} = {794E5EB6-B6E0-4C57-82D0-B329DFE3E849}
 		{8B5B2EDF-0770-4F1C-B887-2E43B6FF265E} = {794E5EB6-B6E0-4C57-82D0-B329DFE3E849}
 		{7D2606CB-6B67-483B-A143-B9AA4CBFBA11} = {CB787C86-6C8B-416F-8C1B-E2E9AE42F1C6}
 		{04808908-4373-481A-9C29-BD9BA74C8C72} = {794E5EB6-B6E0-4C57-82D0-B329DFE3E849}
 		{127DDA5B-4C60-4669-A64F-4604135066E5} = {794E5EB6-B6E0-4C57-82D0-B329DFE3E849}
+		{87F48DCC-EAF2-465A-82C9-D14ECEA7C068} = {794E5EB6-B6E0-4C57-82D0-B329DFE3E849}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A2CC7B3F-F4C9-4B6C-AD09-470CE42C157B}
