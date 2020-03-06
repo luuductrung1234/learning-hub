@@ -18,7 +18,7 @@ namespace ECommerce.API.Controllers
     {
         private const string URL_PREFIX = "fabric:/";
         private const string APPLICATION_NAME = "ECommerce";
-        private const string CATALOG_SERVICE_NAME = "ECommerce.ProductCatalog";
+        private const string CATALOG_SERVICE_NAME = "ECommerce.ProductCatalogService";
 
         private readonly IProductCatalogService _catalogService;
 
