@@ -1,0 +1,20 @@
+{
+    "name": "generator-simpleweb",
+    "version": "1.0.0",
+    "description": "yeoman generator for simple web application",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "ldt",
+    "license": "ISC",
+    "files": [
+        "generators"
+    ],
+    "keywords": [
+        "yeoman-generator"
+    ],
+    "dependencies": {
+        "yeoman-generator": "^4.6.0"
+    }
+}

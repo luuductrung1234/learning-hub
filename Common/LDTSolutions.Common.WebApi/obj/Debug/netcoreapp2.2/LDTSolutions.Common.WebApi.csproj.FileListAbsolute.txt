@@ -1,0 +1,9 @@
+f:\SourceCode\Research_BackEnd\LDTSolutions\Common\LDTSolutions.Common.WebApi\bin\Debug\netcoreapp2.2\LDTSolutions.Common.WebApi.deps.json
+f:\SourceCode\Research_BackEnd\LDTSolutions\Common\LDTSolutions.Common.WebApi\bin\Debug\netcoreapp2.2\LDTSolutions.Common.WebApi.dll
+f:\SourceCode\Research_BackEnd\LDTSolutions\Common\LDTSolutions.Common.WebApi\bin\Debug\netcoreapp2.2\LDTSolutions.Common.WebApi.pdb
+f:\SourceCode\Research_BackEnd\LDTSolutions\Common\LDTSolutions.Common.WebApi\obj\Debug\netcoreapp2.2\LDTSolutions.Common.WebApi.csprojAssemblyReference.cache
+f:\SourceCode\Research_BackEnd\LDTSolutions\Common\LDTSolutions.Common.WebApi\obj\Debug\netcoreapp2.2\LDTSolutions.Common.WebApi.csproj.CoreCompileInputs.cache
+f:\SourceCode\Research_BackEnd\LDTSolutions\Common\LDTSolutions.Common.WebApi\obj\Debug\netcoreapp2.2\LDTSolutions.Common.WebApi.AssemblyInfoInputs.cache
+f:\SourceCode\Research_BackEnd\LDTSolutions\Common\LDTSolutions.Common.WebApi\obj\Debug\netcoreapp2.2\LDTSolutions.Common.WebApi.AssemblyInfo.cs
+f:\SourceCode\Research_BackEnd\LDTSolutions\Common\LDTSolutions.Common.WebApi\obj\Debug\netcoreapp2.2\LDTSolutions.Common.WebApi.dll
+f:\SourceCode\Research_BackEnd\LDTSolutions\Common\LDTSolutions.Common.WebApi\obj\Debug\netcoreapp2.2\LDTSolutions.Common.WebApi.pdb
