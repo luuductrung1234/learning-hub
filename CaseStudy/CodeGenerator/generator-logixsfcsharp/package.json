@@ -1,0 +1,25 @@
+{
+    "name": "generator-logixsfcsharp",
+    "version": "1.0.0",
+    "description": "Yeoman generator for Azure Service Fabric's Csharp application",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "luuductrung1234@gmail.com",
+    "license": "ISC",
+    "files": [
+        "generators"
+    ],
+    "keywords": [
+        "Azure",
+        "Service Fabric",
+        "yeoman-generator"
+    ],
+    "dependencies": {
+        "chalk": "^3.0.0",
+        "xml2js": "^0.4.23",
+        "yeoman-generator": "^4.6.0",
+        "yosay": "^2.0.2"
+    }
+}
