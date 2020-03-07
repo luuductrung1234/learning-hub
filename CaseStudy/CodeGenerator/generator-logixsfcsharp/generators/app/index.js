@@ -9,7 +9,11 @@ var yosay = require("yosay");
 
 var CSharpGenerator = class extends Generator {
     PROJECTNAME = "projName";
+
     FRAMEWORK_TYPE = "frameworkType";
+    ACTOR_FRAMEWORK_TYPE = "Reliable Actor Service";
+    STATELESS_SERVICE_FRAMEWORK_TYPE = "Reliable Stateless Service";
+    STATEFUL_SERVICE_FRAMEWORK_TYPE = "Reliable Stateful Service";
 
     GUEST_USECASE = "isGuestUseCase";
     LOGGING = "logging";
@@ -40,7 +44,7 @@ var CSharpGenerator = class extends Generator {
 
         var prompts = this._generator_inquiries();
         await this.prompt(prompts).then(answers => {
-            answers.projName = answers.projName.trim();
+            answers[this.PROJECTNAME] = answers[this.PROJECTNAME].trim();
 
             this.props = answers;
             this.config.set(answers);
@@ -71,7 +75,23 @@ var CSharpGenerator = class extends Generator {
     /**
      * Where to write the generator specific files (routes, controllers, etc)
      */
-    writing() {}
+    writing() {
+        var libPath = "REPLACE_SFLIBSPATH";
+        var isAddNewService = false;
+        if (this.props[this.FRAMEWORK_TYPE] == this.ACTOR_FRAMEWORK_TYPE) {
+            this.composeWith(require.resolve("../CoreCLRStatefulActor"), {
+                options: { libPath: libPath, isAddNewService: isAddNewService }
+            });
+        } else if (this.props[this.FRAMEWORK_TYPE] == this.STATELESS_SERVICE_FRAMEWORK_TYPE) {
+            this.composeWith(require.resolve("../CoreCLRStatelessService"), {
+                options: { libPath: libPath, isAddNewService: isAddNewService }
+            });
+        } else if (this.props[this.FRAMEWORK_TYPE] == this.STATEFUL_SERVICE_FRAMEWORK_TYPE) {
+            this.composeWith(require.resolve("../CoreCLRStatefulService"), {
+                options: { libPath: libPath, isAddNewService: isAddNewService }
+            });
+        }
+    }
 
     /**
      * Where conflicts are handled (used internally)
@@ -137,9 +157,9 @@ var CSharpGenerator = class extends Generator {
                     message: "Choose a framework for you service: ",
                     default: this.config.get(this.FRAMEWORK_TYPE),
                     choices: [
-                        "Reliable Actor Service",
-                        "Reliable Stateless Service",
-                        "Reliable Stateful Service"
+                        this.ACTOR_FRAMEWORK_TYPE,
+                        this.STATEFUL_SERVICE_FRAMEWORK_TYPE,
+                        this.STATELESS_SERVICE_FRAMEWORK_TYPE
                     ],
                     store: false
                 }
@@ -218,7 +238,9 @@ var CSharpGenerator = class extends Generator {
             `Generator Option ${this.LOGGING}: ${this.options[this.LOGGING]}`
         );
         this._logTrace(
-            `Generator Option ${this.GUEST_USECASE}: ${this.options[this.GUEST_USECASE]}`
+            `Generator Option ${this.GUEST_USECASE}: ${
+                this.options[this.GUEST_USECASE]
+            }`
         );
     }
 
