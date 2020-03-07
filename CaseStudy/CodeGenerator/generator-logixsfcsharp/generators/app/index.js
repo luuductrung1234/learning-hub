@@ -2,35 +2,60 @@
 
 var Generator = require("yeoman-generator");
 
-var _fs = require("fs");
-var _path = require("path");
-// var _yosay = require("yosay");
-// var _chalk = require("chalk");
-// var _wiredep = require("wiredep");
+var path = require("path");
+var yosay = require("yosay");
+// var chalk = require("chalk");
+// var wiredep = require("wiredep");
 
 var CSharpGenerator = class extends Generator {
-    APPNAME = "appname";
+    PROJECTNAME = "projName";
+    FRAMEWORK_TYPE = "frameworkType";
+
+    GUEST_USECASE = "isGuestUseCase";
+    LOGGING = "logging";
 
     constructor(args, opts) {
         // Calling the super constructor is import so out generator is correctly setup
         super(args, opts);
 
         // TODO: Next, add your custom code
+        this._generator_options_config();
+        this._generator_options_handler();
         this._generator_arguments_config();
+        this._generator_arguments_handler();
+
+        this.desc("Generate Service Fabric CSharp app template");
     }
 
     /**
-     * Your initialization methods (checking current project state, getting configs, etc
+     * initialization methods (checking current project state, getting configs, etc
      */
     initalizing() {}
 
     /**
-     * Where you prompt users for options (where you’d call this.prompt())
+     * Where to prompt users for options (where to call this.prompt())
      */
     async prompting() {
-        const answers = await this.prompt(this._generator_inquiries());
+        this.log(yosay("Welcome to Service Fabric generator for CSharp"));
 
-        this.log(`::GENERATOR::INFO:: >>  Application's name ${answers[this.APPNAME]}`)
+        var prompts = this._generator_inquiries();
+        await this.prompt(prompts).then(answers => {
+            answers.projName = answers.projName.trim();
+
+            this.props = answers;
+            this.config.set(answers);
+        });
+
+        this._logTrace(
+            `Generator's Property ${this.PROJECTNAME}: ${
+                this.props[this.PROJECTNAME]
+            }`
+        );
+        this._logTrace(
+            `Generator's Property ${this.FRAMEWORK_TYPE}: ${
+                this.props[this.FRAMEWORK_TYPE]
+            }`
+        );
     }
 
     /**
@@ -44,7 +69,7 @@ var CSharpGenerator = class extends Generator {
     default() {}
 
     /**
-     * Where you write the generator specific files (routes, controllers, etc)
+     * Where to write the generator specific files (routes, controllers, etc)
      */
     writing() {}
 
@@ -61,7 +86,32 @@ var CSharpGenerator = class extends Generator {
     /**
      * Called last, cleanup, say good bye, etc
      */
-    end() {}
+    end() {
+        this.config.save();
+        if (this.options[this.GUEST_USECASE] == false) {
+            //this is for Add Service
+            var nodeFs = require("fs");
+            if (
+                nodeFs
+                    .statSync(path.join(this.destinationRoot(), ".yo-rc.json"))
+                    .isFile()
+            ) {
+                nodeFs
+                    .createReadStream(
+                        path.join(this.destinationRoot(), ".yo-rc.json")
+                    )
+                    .pipe(
+                        nodeFs.createWriteStream(
+                            path.join(
+                                this.destinationRoot(),
+                                this.props.projName,
+                                ".yo-rc.json"
+                            )
+                        )
+                    );
+            }
+        }
+    }
 
     /**
      * This method is not a Yeoman's task.
@@ -70,12 +120,27 @@ var CSharpGenerator = class extends Generator {
     _generator_inquiries() {
         var inquiries = [
             {
-                key: this.APPNAME,
+                key: this.PROJECTNAME,
                 value: {
                     type: "input",
-                    name: this.APPNAME,
+                    name: this.PROJECTNAME,
                     message: "Your Service Fabric Application's name: ",
-                    default: this.appname, // Default to current folder name
+                    default: this.config.get(this.PROJECTNAME),
+                    store: false
+                }
+            },
+            {
+                key: this.FRAMEWORK_TYPE,
+                value: {
+                    type: "list",
+                    name: this.FRAMEWORK_TYPE,
+                    message: "Choose a framework for you service: ",
+                    default: this.config.get(this.FRAMEWORK_TYPE),
+                    choices: [
+                        "Reliable Actor Service",
+                        "Reliable Stateless Service",
+                        "Reliable Stateful Service"
+                    ],
                     store: false
                 }
             }
@@ -84,12 +149,18 @@ var CSharpGenerator = class extends Generator {
         var result = [];
 
         inquiries.forEach(inquiry => {
-            if(this.options[inquiry.key] == "" || this.options[inquiry.key] == undefined) {
-                this.log(`::GENERATOR::INFO:: >>  Inquiry ${inquiry.key} was added`)
+            if (
+                this.options[inquiry.key] == "" ||
+                this.options[inquiry.key] == undefined
+            ) {
+                this._logTrace(`Generator Inquiry: ${inquiry.key} was added`);
                 result.push(inquiry.value);
-            }
-            else {
-                this.log(`::GENERATOR::INFO:: >>  Inquiry ${inquiry.key} was ignored`)
+            } else {
+                this._logTrace(
+                    `Generator Inquiry: ${inquiry.key} was updated and added`
+                );
+                inquiry.value.default = this.options[inquiry.key];
+                result.push(inquiry.value);
             }
         });
 
@@ -101,11 +172,22 @@ var CSharpGenerator = class extends Generator {
      * It is not run in sequence by the Yeoman environment run loop.
      */
     _generator_arguments_config() {
-        // This makes `appname` a required argument.
-        this.argument(this.APPNAME, { description: "Service Fabric application's name", type: String, required: false, default: "" });
+        // This makes `projName` a argument.
+        this.argument(this.PROJECTNAME, {
+            description: "Service Fabric application's name",
+            type: String,
+            required: false,
+            default: ""
+        });
+    }
 
+    _generator_arguments_handler() {
         // And you can then access it later; e.g.
-        this.log(`::GENERATOR::INFO:: >> Application's name: ${this.options[this.APPNAME]}`);
+        this._logTrace(
+            `Generator Argument ${this.PROJECTNAME}: ${
+                this.options[this.PROJECTNAME]
+            }`
+        );
     }
 
     /**
@@ -113,11 +195,49 @@ var CSharpGenerator = class extends Generator {
      * It is not run in sequence by the Yeoman environment run loop.
      */
     _generator_options_config() {
-        // This makes `appname` a required argument.
-        this.argument(this.APPNAME, { description: "Service Fabric application's name", type: String, required: false, default: "" });
+        // This makes `logging` a option.
+        this.option(this.LOGGING, {
+            description: "Enable logging while using generator",
+            type: Boolean,
+            alias: "log",
+            default: false
+        });
 
+        // This makes `isGuestUseCase` a option.
+        this.option(this.GUEST_USECASE, {
+            description: "Is generator running on guest usecase?",
+            type: Boolean,
+            alias: "guest",
+            default: false
+        });
+    }
+
+    _generator_options_handler() {
         // And you can then access it later; e.g.
-        this.log(`::GENERATOR::INFO:: >> Application's name: ${this.options[this.APPNAME]}`);
+        this._logTrace(
+            `Generator Option ${this.LOGGING}: ${this.options[this.LOGGING]}`
+        );
+        this._logTrace(
+            `Generator Option ${this.GUEST_USECASE}: ${this.options[this.GUEST_USECASE]}`
+        );
+    }
+
+    /**
+     * This method is not a Yeoman's task.
+     * It is not run in sequence by the Yeoman environment run loop.
+     */
+    _logTrace(message) {
+        if (this.options[this.LOGGING])
+            this.log(`::GENERATOR::TRACE:: >> ${message}`);
+    }
+
+    /**
+     * This method is not a Yeoman's task.
+     * It is not run in sequence by the Yeoman environment run loop.
+     */
+    _logInfo(message) {
+        if (this.options[this.LOGGING])
+            this.log(`::GENERATOR::INFO:: >> ${message}`);
     }
 };
 
