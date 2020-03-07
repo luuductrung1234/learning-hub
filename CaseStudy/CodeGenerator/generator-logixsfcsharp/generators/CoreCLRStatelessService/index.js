@@ -8,6 +8,13 @@ var yosay = require("yosay");
 // var wiredep = require("wiredep");
 
 var ClassGenerator = class extends Generator {
+    PROJECTNAME = "projName";
+    SERVICENAME = "serviceFQN";
+
+    LIB_PATH = "libPath";
+    ADD_NEW_SERVICE = "isAddNewService";
+    LOGGING = "logging";
+
     constructor(args, opts) {
         // Calling the super constructor is import so out generator is correctly setup
         super(args, opts);
@@ -24,15 +31,33 @@ var ClassGenerator = class extends Generator {
     /**
      * initialization methods (checking current project state, getting configs, etc
      */
-    initalizing() {}
+    initalizing() {
+        this.props = this.config.getAll();
+        this.config.defaults({
+            author: "<your name>"
+        });
+    }
 
     /**
      * Where to prompt users for options (where to call this.prompt())
      */
     async prompting() {
+        var utility = require("../utility");
+
         var prompts = this._generator_inquiries();
+
         await this.prompt(prompts).then(answers => {
-            this.props = answers;
+            this.serviceFQN = answers[this.SERVICENAME];
+            var parts = this.serviceFQN.split(".");
+            var name = parts.pop();
+            this.packageName = parts.join(".");
+            this.dir = parts.join("/");
+            this.serviceName = utility.capitalizeFirstLetter(name.trim());
+            if (!this.packageName) {
+                this.packageName = "statelessservice";
+                this.serviceFQN = "statelessservice" + this.serviceFQN;
+                this.dir = this.dir + "/statelessservice";
+            }
         });
     }
 
@@ -49,7 +74,30 @@ var ClassGenerator = class extends Generator {
     /**
      * Where to write the generator specific files (routes, controllers, etc)
      */
-    writing() {}
+    writing() {
+        var serviceProjName = this.serviceName;
+        var serviceName = this.serviceName;
+        var servicePackage = this.serviceName + "Pkg";
+        var serviceTypeName = this.serviceName + "Type";
+
+        var appName = this.props[this.PROJECTNAME];
+        var appPackage = this.props[this.PROJECTNAME];
+        var appTypeName = this.props[this.PROJECTNAME] + "Type";
+
+        var serviceMainClass = this.serviceName + "Service";
+        var endpoint = serviceName + "Endpoint";
+
+        var serviceSrcPath = path.join(
+            this.props[this.PROJECTNAME],
+            serviceProjName
+        );
+        var serviceProject = path.join(
+            appPackage,
+            "src",
+            serviceSrcPath,
+            serviceProjName + ".csproj"
+        );
+    }
 
     /**
      * Where conflicts are handled (used internally)
@@ -71,14 +119,19 @@ var ClassGenerator = class extends Generator {
      * It is not run in sequence by the Yeoman environment run loop.
      */
     _generator_inquiries() {
+        var utility = require("../utility");
+
         var inquiries = [
             {
-                key: "INPUTKEY",
+                key: this.SERVICENAME,
                 value: {
                     type: "input",
-                    name: "INPUTKEY",
-                    message: "Your Service Fabric Application's name: ",
-                    default: this.config.get("INPUTKEY"),
+                    name: this.SERVICENAME,
+                    message: "Enter Reliable Service's name: ",
+                    validate: function(input) {
+                        return input ? utility.validateFQN(input) : false;
+                    },
+                    default: this.config.get(this.SERVICENAME),
                     store: false
                 }
             }
@@ -111,16 +164,21 @@ var ClassGenerator = class extends Generator {
      */
     _generator_arguments_config() {
         // This makes `projName` a argument.
-        // this.argument(this.PROJECTNAME, {
-        //     description: "Service Fabric application's name",
-        //     type: String,
-        //     required: false,
-        //     default: ""
-        // });
+        this.argument(this.SERVICENAME, {
+            description: "Service Fabric reliable service's name",
+            type: String,
+            required: false,
+            default: ""
+        });
     }
 
     _generator_arguments_handler() {
         // And you can then access it later; e.g.
+        this._logTrace(
+            `Generator Argument ${this.SERVICENAME}: ${
+                this.options[this.SERVICENAME]
+            }`
+        );
     }
 
     /**
@@ -128,17 +186,38 @@ var ClassGenerator = class extends Generator {
      * It is not run in sequence by the Yeoman environment run loop.
      */
     _generator_options_config() {
-        // This makes `logging` a option.
-        // this.option(this.LOGGING, {
-        //     description: "Enable logging while using generator",
-        //     type: Boolean,
-        //     alias: "log",
-        //     default: false
-        // });
+        this.option(this.LOGGING, {
+            description: "Enable logging while using generator",
+            type: Boolean,
+            alias: "log",
+            default: false
+        });
+        this.option(this.LIB_PATH, {
+            type: String,
+            require: true
+        });
+        this.option(this.ADD_NEW_SERVICE, {
+            type: Boolean,
+            require: true
+        });
     }
 
     _generator_options_handler() {
-        // And you can then access it later; e.g.
+        this._logTrace(
+            `Generator Option ${this.LOGGING}: ${this.options[this.LOGGING]}`
+        );
+
+        this.libPath = this.options[this.LIB_PATH];
+        this._logTrace(
+            `Generator Option ${this.LIB_PATH}: ${this.options[this.LIB_PATH]}`
+        );
+
+        this.isAddNewService = this.options[this.ADD_NEW_SERVICE];
+        this._logTrace(
+            `Generator Option ${this.ADD_NEW_SERVICE}: ${
+                this.options[this.ADD_NEW_SERVICE]
+            }`
+        );
     }
 
     /**

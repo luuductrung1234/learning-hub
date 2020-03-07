@@ -138,6 +138,8 @@ var CSharpGenerator = class extends Generator {
      * It is not run in sequence by the Yeoman environment run loop.
      */
     _generator_inquiries() {
+        var utility = require("../utility");
+
         var inquiries = [
             {
                 key: this.PROJECTNAME,
@@ -146,6 +148,9 @@ var CSharpGenerator = class extends Generator {
                     name: this.PROJECTNAME,
                     message: "Your Service Fabric Application's name: ",
                     default: this.config.get(this.PROJECTNAME),
+                    validate: function(input) {
+                        return input ? utility.validateFQN(input) : false;
+                    },
                     store: false
                 }
             },
@@ -194,7 +199,7 @@ var CSharpGenerator = class extends Generator {
     _generator_arguments_config() {
         // This makes `projName` a argument.
         this.argument(this.PROJECTNAME, {
-            description: "Service Fabric application's name",
+            description: "Enter Service Fabric Application's name",
             type: String,
             required: false,
             default: ""
