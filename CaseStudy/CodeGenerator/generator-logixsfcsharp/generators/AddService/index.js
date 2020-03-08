@@ -16,7 +16,6 @@ var CSharpGenerator = class extends Generator {
     STATELESS_SERVICE_FRAMEWORK_TYPE = "Reliable Stateless Service";
     STATEFUL_SERVICE_FRAMEWORK_TYPE = "Reliable Stateful Service";
 
-    GUEST_USECASE = "isGuestUseCase";
     LOGGING = "logging";
 
     constructor(args, opts) {
@@ -30,6 +29,20 @@ var CSharpGenerator = class extends Generator {
         this._generator_arguments_handler();
 
         this.desc("Generate Service Fabric CSharp app template");
+        var chalk = require("chalk");
+        if (this.config.get(this.APPNAME)) {
+            this._logInfo(
+                chalk.green(
+                    "Setting project name to",
+                    this.config.get(this.APPNAME)
+                )
+            );
+        } else {
+            var err = chalk.red(
+                "Project name not found in .yo-rc.json. Exiting ..."
+            );
+            throw err;
+        }
     }
 
     /**
@@ -41,24 +54,14 @@ var CSharpGenerator = class extends Generator {
      * Where to prompt users for options (where to call this.prompt())
      */
     async prompting() {
-        this.log(yosay("Welcome to Service Fabric generator for CSharp"));
-
         var prompts = this._generator_inquiries();
+        
         await this.prompt(prompts).then(answers => {
             answers[this.APPNAME] = answers[this.APPNAME].trim();
 
             this.props = answers;
             this.config.set(answers);
         });
-
-        this._logTrace(
-            `Generator's Property ${this.APPNAME}: ${this.props[this.APPNAME]}`
-        );
-        this._logTrace(
-            `Generator's Property ${this.FRAMEWORK_TYPE}: ${
-                this.props[this.FRAMEWORK_TYPE]
-            }`
-        );
     }
 
     /**
@@ -76,7 +79,7 @@ var CSharpGenerator = class extends Generator {
      */
     writing() {
         var libPath = "REPLACE_SFLIBSPATH";
-        var isAddNewService = false;
+        var isAddNewService = true;
 
         if (this.props[this.FRAMEWORK_TYPE] == this.ACTOR_FRAMEWORK_TYPE) {
             this.composeWith(require.resolve("../CoreCLRStatefulActor"), {
@@ -120,29 +123,6 @@ var CSharpGenerator = class extends Generator {
      */
     end() {
         this.config.save();
-        if (this.options[this.GUEST_USECASE] == false) {
-            //this is for Add Service
-            var nodeFs = require("fs");
-            if (
-                nodeFs
-                    .statSync(path.join(this.destinationRoot(), ".yo-rc.json"))
-                    .isFile()
-            ) {
-                nodeFs
-                    .createReadStream(
-                        path.join(this.destinationRoot(), ".yo-rc.json")
-                    )
-                    .pipe(
-                        nodeFs.createWriteStream(
-                            path.join(
-                                this.destinationRoot(),
-                                this.props[this.APPNAME],
-                                ".yo-rc.json"
-                            )
-                        )
-                    );
-            }
-        }
     }
 
     /**
@@ -153,32 +133,6 @@ var CSharpGenerator = class extends Generator {
         var utility = require("../utility");
 
         var inquiries = [
-            {
-                key: this.SOLUTIONNAME,
-                value: {
-                    type: "input",
-                    name: this.SOLUTIONNAME,
-                    message: "Enter Solution's name: ",
-                    default: this.config.get(this.SOLUTIONNAME),
-                    validate: function(input) {
-                        return input ? utility.validateFQN(input) : false;
-                    },
-                    store: false
-                }
-            },
-            {
-                key: this.APPNAME,
-                value: {
-                    type: "input",
-                    name: this.APPNAME,
-                    message: "Enter Service Fabric Application's name: ",
-                    default: this.config.get(this.APPNAME),
-                    validate: function(input) {
-                        return input ? utility.validateFQN(input) : false;
-                    },
-                    store: false
-                }
-            },
             {
                 key: this.FRAMEWORK_TYPE,
                 value: {
@@ -221,22 +175,9 @@ var CSharpGenerator = class extends Generator {
      * This method is not a Yeoman's task.
      * It is not run in sequence by the Yeoman environment run loop.
      */
-    _generator_arguments_config() {
-        // This makes `projName` a argument.
-        this.argument(this.APPNAME, {
-            description: "Enter Service Fabric Application's name",
-            type: String,
-            required: false,
-            default: ""
-        });
-    }
+    _generator_arguments_config() {}
 
-    _generator_arguments_handler() {
-        // And you can then access it later; e.g.
-        this._logTrace(
-            `Generator Argument ${this.APPNAME}: ${this.options[this.APPNAME]}`
-        );
-    }
+    _generator_arguments_handler() {}
 
     /**
      * This method is not a Yeoman's task.
@@ -250,25 +191,12 @@ var CSharpGenerator = class extends Generator {
             alias: "log",
             default: false
         });
-
-        // This makes `isGuestUseCase` a option.
-        this.option(this.GUEST_USECASE, {
-            description: "Is generator running on guest usecase?",
-            type: Boolean,
-            alias: "guest",
-            default: false
-        });
     }
 
     _generator_options_handler() {
         // And you can then access it later; e.g.
         this._logTrace(
             `Generator Option ${this.LOGGING}: ${this.options[this.LOGGING]}`
-        );
-        this._logTrace(
-            `Generator Option ${this.GUEST_USECASE}: ${
-                this.options[this.GUEST_USECASE]
-            }`
         );
     }
 

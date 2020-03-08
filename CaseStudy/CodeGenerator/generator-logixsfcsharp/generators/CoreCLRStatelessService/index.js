@@ -3,13 +3,14 @@
 var Generator = require("yeoman-generator");
 
 var path = require("path");
-var yosay = require("yosay");
 // var chalk = require("chalk");
 // var wiredep = require("wiredep");
 
 var ClassGenerator = class extends Generator {
-    PROJECTNAME = "projName";
-    SERVICENAME = "serviceFQN";
+    SOLUTIONNAME = "solutionname";
+    APPNAME = "appname";
+    SERVICENAME = "servicename";
+    PATH = "path";
 
     LIB_PATH = "libPath";
     ADD_NEW_SERVICE = "isAddNewService";
@@ -47,17 +48,20 @@ var ClassGenerator = class extends Generator {
         var prompts = this._generator_inquiries();
 
         await this.prompt(prompts).then(answers => {
-            this.serviceFQN = answers[this.SERVICENAME];
-            var parts = this.serviceFQN.split(".");
-            var name = parts.pop();
-            this.packageName = parts.join(".");
-            this.dir = parts.join("/");
-            this.serviceName = utility.capitalizeFirstLetter(name.trim());
-            if (!this.packageName) {
-                this.packageName = "statelessservice";
-                this.serviceFQN = "statelessservice" + this.serviceFQN;
-                this.dir = this.dir + "/statelessservice";
-            }
+            this.path = answers[this.PATH];
+            this.serviceName = answers[this.SERVICENAME];
+
+            // this.serviceFQN = answers[this.SERVICENAME];
+            // var parts = this.serviceFQN.split(".");
+            // var name = parts.pop();
+            // this.packageName = parts.join(".");
+            // this.dir = parts.join("/");
+            // this.serviceName = utility.capitalizeFirstLetter(name.trim());
+            // if (!this.packageName) {
+            //     this.packageName = "statelessservice";
+            //     this.serviceFQN = "statelessservice" + this.serviceFQN;
+            //     this.dir = this.dir + "/statelessservice";
+            // }
         });
     }
 
@@ -75,27 +79,183 @@ var ClassGenerator = class extends Generator {
      * Where to write the generator specific files (routes, controllers, etc)
      */
     writing() {
-        var serviceProjName = this.serviceName;
-        var serviceName = this.serviceName;
-        var servicePackage = this.serviceName + "Pkg";
-        var serviceTypeName = this.serviceName + "Type";
+        var helper = require("../generalHelper");
+        var manifestHelper = require("../manifestHelper");
+        var scriptHelper = require("../scriptHelper");
 
-        var appName = this.props[this.PROJECTNAME];
-        var appPackage = this.props[this.PROJECTNAME];
-        var appTypeName = this.props[this.PROJECTNAME] + "Type";
-
-        var serviceMainClass = this.serviceName + "Service";
-        var endpoint = serviceName + "Endpoint";
-
-        var serviceSrcPath = path.join(
-            this.props[this.PROJECTNAME],
-            serviceProjName
+        // application variables
+        var appProjName = this.props[this.APPNAME];
+        var appTypeName = this.props[this.APPNAME] + "Type";
+        var appSrcPath = path.join(
+            this.props[this.SOLUTIONNAME],
+            this.props[this.APPNAME]
         );
-        var serviceProject = path.join(
-            appPackage,
-            "src",
+        var appProjectFileName = path.join(appSrcPath, appProjName + ".sfproj");
+        var appPackagePath = path.join(appSrcPath, "ApplicationPackageRoot");
+        var appParametersPath = path.join(appSrcPath, "ApplicationParameters");
+
+        // service variables
+        var serviceProjName = this.serviceName;
+        var servicePackageName = this.serviceName + "Pkg";
+        var serviceTypeName = this.serviceName + "Type";
+        var serviceName = this.serviceName;
+        var serviceSrcPath = path.join(
+            this.props[this.SOLUTIONNAME],
+            this.path,
+            this.serviceName
+        );
+        var serviceProjectFileName = path.join(
             serviceSrcPath,
             serviceProjName + ".csproj"
+        );
+        var servicePackagePath = path.join(serviceSrcPath, "PackageRoot");
+        var endpoint = Math.floor(Math.random() * 9000) + 8000;
+
+        manifestHelper.generateApplicationManifest(
+            appPackagePath,
+            appTypeName,
+            serviceName,
+            servicePackageName,
+            serviceTypeName
+        );
+
+        manifestHelper.generateApplicationParameters(appParametersPath, serviceName);
+
+        manifestHelper.generateServiceManifest(
+            servicePackagePath,
+            serviceName,
+            serviceProjName,
+            servicePackageName,
+            serviceTypeName,
+            endpoint
+        );
+    }
+
+    _generateContent() {
+        this.fs.copyTpl(
+            this.templatePath(
+                "service/app/appPackage/servicePackage/Config/Settings.xml"
+            ),
+            this.destinationPath(
+                path.join(
+                    appPackage,
+                    appPackagePath,
+                    servicePackage,
+                    "Config",
+                    "Settings.xml"
+                )
+            ),
+            {
+                serviceName: serviceName
+            }
+        );
+
+        this.fs.copyTpl(
+            this.templatePath("service/class/ServiceImpl.cs"),
+            this.destinationPath(
+                path.join(
+                    appPackage,
+                    "src",
+                    serviceSrcPath,
+                    this.serviceName + ".cs"
+                )
+            ),
+            {
+                serviceName: serviceName,
+                serviceName: this.serviceName,
+                appName: appName
+            }
+        );
+        this.fs.copyTpl(
+            this.templatePath("service/class/project.csproj"),
+            this.destinationPath(
+                path.join(
+                    appPackage,
+                    "src",
+                    serviceSrcPath,
+                    this.serviceName + ".csproj"
+                )
+            ),
+            {
+                serviceName: this.serviceName,
+                authorName: this.props.authorName
+            }
+        );
+        this.fs.copyTpl(
+            this.templatePath("service/class/Program.cs"),
+            this.destinationPath(
+                path.join(appPackage, "src", serviceSrcPath, "Program.cs")
+            ),
+            {
+                serviceName: this.serviceName,
+                authorName: this.props.authorName,
+                appName: appName,
+                serviceTypeName: serviceTypeName
+            }
+        );
+        this.fs.copyTpl(
+            this.templatePath("service/class/ServiceEventListener.cs"),
+            this.destinationPath(
+                path.join(
+                    appPackage,
+                    "src",
+                    serviceSrcPath,
+                    "ServiceEventListener.cs"
+                )
+            ),
+            {
+                serviceName: this.serviceName,
+                authorName: this.props.authorName,
+                appName: appName,
+                serviceTypeName: serviceTypeName
+            }
+        );
+        this.fs.copyTpl(
+            this.templatePath("service/class/ServiceEventSource.cs"),
+            this.destinationPath(
+                path.join(
+                    appPackage,
+                    "src",
+                    serviceSrcPath,
+                    "ServiceEventSource.cs"
+                )
+            ),
+            {
+                serviceName: this.serviceName,
+                authorName: this.props.authorName,
+                appName: appName,
+                serviceTypeName: serviceTypeName
+            }
+        );
+
+        this.fs.copyTpl(
+            this.templatePath(
+                "service/app/appPackage/servicePackage/Config/_readme.txt"
+            ),
+            this.destinationPath(
+                path.join(
+                    appPackage,
+                    appPackagePath,
+                    servicePackage,
+                    "Config",
+                    "_readme.txt"
+                )
+            )
+        );
+
+        this.fs.copyTpl(
+            this.templatePath(
+                "service/app/appPackage/servicePackage/Data/_readme.txt"
+            ),
+            this.destinationPath(
+                path.join(
+                    appPackage,
+                    appPackagePath,
+                    servicePackage,
+                    "Data",
+                    "_readme.txt"
+                )
+            )
         );
     }
 
@@ -132,6 +292,16 @@ var ClassGenerator = class extends Generator {
                         return input ? utility.validateFQN(input) : false;
                     },
                     default: this.config.get(this.SERVICENAME),
+                    store: false
+                }
+            },
+            {
+                key: this.PATH,
+                value: {
+                    type: "input",
+                    name: this.PATH,
+                    message: "Enter relative path to this service: ",
+                    default: this.config.get(this.PATH),
                     store: false
                 }
             }
@@ -187,9 +357,7 @@ var ClassGenerator = class extends Generator {
      */
     _generator_options_config() {
         this.option(this.LOGGING, {
-            description: "Enable logging while using generator",
             type: Boolean,
-            alias: "log",
             default: false
         });
         this.option(this.LIB_PATH, {
@@ -236,6 +404,15 @@ var ClassGenerator = class extends Generator {
     _logInfo(message) {
         if (this.options[this.LOGGING])
             this.log(`::GENERATOR::INFO:: >> ${message}`);
+    }
+
+    /**
+     * This method is not a Yeoman's task.
+     * It is not run in sequence by the Yeoman environment run loop.
+     */
+    _logError(message) {
+        if (this.options[this.LOGGING])
+            this.log(`::GENERATOR::ERROR:: >> ${message}`);
     }
 };
 
