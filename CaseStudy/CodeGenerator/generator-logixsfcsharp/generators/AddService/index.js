@@ -45,10 +45,17 @@ var CSharpGenerator = class extends Generator {
         }
     }
 
+    //#region Sequence Methods
+
     /**
      * initialization methods (checking current project state, getting configs, etc
      */
-    initalizing() {}
+    initalizing() {
+        this.props = this.config.getAll();
+        this.config.defaults({
+            author: "<your name>"
+        });
+    }
 
     /**
      * Where to prompt users for options (where to call this.prompt())
@@ -57,10 +64,7 @@ var CSharpGenerator = class extends Generator {
         var prompts = this._generator_inquiries();
         
         await this.prompt(prompts).then(answers => {
-            answers[this.APPNAME] = answers[this.APPNAME].trim();
-
             this.props = answers;
-            this.config.set(answers);
         });
     }
 
@@ -83,6 +87,7 @@ var CSharpGenerator = class extends Generator {
 
         if (this.props[this.FRAMEWORK_TYPE] == this.ACTOR_FRAMEWORK_TYPE) {
             this.composeWith(require.resolve("../CoreCLRStatefulActor"), {
+                containerPath: this.destinationRoot(),
                 logging: this.options[this.LOGGING],
                 libPath: libPath,
                 isAddNewService: isAddNewService
@@ -92,6 +97,7 @@ var CSharpGenerator = class extends Generator {
             this.STATELESS_SERVICE_FRAMEWORK_TYPE
         ) {
             this.composeWith(require.resolve("../CoreCLRStatelessService"), {
+                containerPath: this.destinationRoot(),
                 logging: this.options[this.LOGGING],
                 libPath: libPath,
                 isAddNewService: isAddNewService
@@ -101,6 +107,7 @@ var CSharpGenerator = class extends Generator {
             this.STATEFUL_SERVICE_FRAMEWORK_TYPE
         ) {
             this.composeWith(require.resolve("../CoreCLRStatefulService"), {
+                containerPath: this.destinationRoot(),
                 logging: this.options[this.LOGGING],
                 libPath: libPath,
                 isAddNewService: isAddNewService
@@ -124,6 +131,10 @@ var CSharpGenerator = class extends Generator {
     end() {
         this.config.save();
     }
+
+    //#endregion
+
+    //#region Private Methods
 
     /**
      * This method is not a Yeoman's task.
@@ -217,6 +228,8 @@ var CSharpGenerator = class extends Generator {
         if (this.options[this.LOGGING])
             this.log(`::GENERATOR::INFO:: >> ${message}`);
     }
+
+    //#endregion
 };
 
 module.exports = CSharpGenerator;

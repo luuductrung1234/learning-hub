@@ -32,7 +32,7 @@ namespace <%= serviceName %>
                 ServiceEventSource.Current.Message("Registering Service : {0}", "<%= serviceName %>");
 
                 ServiceRuntime.RegisterServiceAsync("<%= serviceTypeName %>",
-                    context => new <%= serviceName %> (context)).GetAwaiter().GetResult();
+                    context => new <%= serviceMainClass %> (context)).GetAwaiter().GetResult();
 
                 ServiceEventSource.Current.Message("Registered Service : {0}", "<%= serviceName %>");
 

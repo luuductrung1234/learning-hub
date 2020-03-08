@@ -1,6 +1,7 @@
 "use strict";
 
 var Generator = require("yeoman-generator");
+var Storage = require("yeoman-generator/lib/util/storage");
 
 var path = require("path");
 var yosay = require("yosay");
@@ -32,6 +33,8 @@ var CSharpGenerator = class extends Generator {
         this.desc("Generate Service Fabric CSharp app template");
     }
 
+    //#region Squence Methods
+
     /**
      * initialization methods (checking current project state, getting configs, etc
      */
@@ -48,6 +51,13 @@ var CSharpGenerator = class extends Generator {
             answers[this.APPNAME] = answers[this.APPNAME].trim();
 
             this.props = answers;
+
+            // override a storepath which store file '.yo-rc.json'
+            this.solutionPath = path.join(this.destinationRoot(), answers[this.SOLUTIONNAME]);
+            const storePath = path.join(this.solutionPath, ".yo-rc.json");
+            this.config = new Storage(this.rootGeneratorName(), this.fs, storePath);
+
+            // update config
             this.config.set(answers);
         });
 
@@ -80,6 +90,7 @@ var CSharpGenerator = class extends Generator {
 
         if (this.props[this.FRAMEWORK_TYPE] == this.ACTOR_FRAMEWORK_TYPE) {
             this.composeWith(require.resolve("../CoreCLRStatefulActor"), {
+                containerPath: this.solutionPath,
                 logging: this.options[this.LOGGING],
                 libPath: libPath,
                 isAddNewService: isAddNewService
@@ -89,6 +100,7 @@ var CSharpGenerator = class extends Generator {
             this.STATELESS_SERVICE_FRAMEWORK_TYPE
         ) {
             this.composeWith(require.resolve("../CoreCLRStatelessService"), {
+                containerPath: this.solutionPath,
                 logging: this.options[this.LOGGING],
                 libPath: libPath,
                 isAddNewService: isAddNewService
@@ -98,6 +110,7 @@ var CSharpGenerator = class extends Generator {
             this.STATEFUL_SERVICE_FRAMEWORK_TYPE
         ) {
             this.composeWith(require.resolve("../CoreCLRStatefulService"), {
+                containerPath: this.solutionPath,
                 logging: this.options[this.LOGGING],
                 libPath: libPath,
                 isAddNewService: isAddNewService
@@ -125,17 +138,17 @@ var CSharpGenerator = class extends Generator {
             var nodeFs = require("fs");
             if (
                 nodeFs
-                    .statSync(path.join(this.destinationRoot(), ".yo-rc.json"))
+                    .statSync(path.join(this.solutionPath, ".yo-rc.json"))
                     .isFile()
             ) {
                 nodeFs
                     .createReadStream(
-                        path.join(this.destinationRoot(), ".yo-rc.json")
+                        path.join(this.solutionPath, ".yo-rc.json")
                     )
                     .pipe(
                         nodeFs.createWriteStream(
                             path.join(
-                                this.destinationRoot(),
+                                this.solutionPath,
                                 this.props[this.APPNAME],
                                 ".yo-rc.json"
                             )
@@ -145,9 +158,15 @@ var CSharpGenerator = class extends Generator {
         }
     }
 
+    //#endregion
+
+    //#region Private Methods
+
     /**
      * This method is not a Yeoman's task.
      * It is not run in sequence by the Yeoman environment run loop.
+     * @return {any[]} inquiries
+     * @private
      */
     _generator_inquiries() {
         var utility = require("../utility");
@@ -220,6 +239,7 @@ var CSharpGenerator = class extends Generator {
     /**
      * This method is not a Yeoman's task.
      * It is not run in sequence by the Yeoman environment run loop.
+     * @private
      */
     _generator_arguments_config() {
         // This makes `projName` a argument.
@@ -231,16 +251,26 @@ var CSharpGenerator = class extends Generator {
         });
     }
 
+    /**
+     * This method is not a Yeoman's task.
+     * It is not run in sequence by the Yeoman environment run loop.
+     * @private
+     */
     _generator_arguments_handler() {
         // And you can then access it later; e.g.
         this._logTrace(
             `Generator Argument ${this.APPNAME}: ${this.options[this.APPNAME]}`
+        );
+
+        this._logTrace(
+            `Generator Argument ${this.SOLUTIONNAME}: ${this.options[this.SOLUTIONNAME]}`
         );
     }
 
     /**
      * This method is not a Yeoman's task.
      * It is not run in sequence by the Yeoman environment run loop.
+     * @private
      */
     _generator_options_config() {
         // This makes `logging` a option.
@@ -260,6 +290,11 @@ var CSharpGenerator = class extends Generator {
         });
     }
 
+    /**
+     * This method is not a Yeoman's task.
+     * It is not run in sequence by the Yeoman environment run loop.
+     * @private
+     */
     _generator_options_handler() {
         // And you can then access it later; e.g.
         this._logTrace(
@@ -275,6 +310,7 @@ var CSharpGenerator = class extends Generator {
     /**
      * This method is not a Yeoman's task.
      * It is not run in sequence by the Yeoman environment run loop.
+     * @private
      */
     _logTrace(message) {
         if (this.options[this.LOGGING])
@@ -284,11 +320,14 @@ var CSharpGenerator = class extends Generator {
     /**
      * This method is not a Yeoman's task.
      * It is not run in sequence by the Yeoman environment run loop.
+     * @private
      */
     _logInfo(message) {
         if (this.options[this.LOGGING])
             this.log(`::GENERATOR::INFO:: >> ${message}`);
     }
+
+    //#endregion
 };
 
 module.exports = CSharpGenerator;

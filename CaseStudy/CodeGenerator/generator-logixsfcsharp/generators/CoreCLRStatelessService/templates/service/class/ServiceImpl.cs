@@ -17,9 +17,9 @@ namespace <%= serviceName %>
     /// <summary>
     /// An instance of this class is created for each service instance by the Service Fabric runtime.
     /// </summary>
-    internal sealed class <%= serviceName %> : StatelessService
+    internal sealed class <%= serviceMainClass %> : StatelessService
     {
-        public <%= serviceName %>(StatelessServiceContext context)
+        public <%= serviceMainClass %>(StatelessServiceContext context)
             : base(context)
         { }
 
