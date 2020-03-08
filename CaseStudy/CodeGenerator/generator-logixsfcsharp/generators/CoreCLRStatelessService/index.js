@@ -13,7 +13,7 @@ var ClassGenerator = class extends Generator {
     SERVICENAME = "servicename";
     PATH = "path";
 
-    CONTAINER_PATH = "containerPath";
+    CONTEXT_PATH = "containerPath";
     LIB_PATH = "libPath";
     ADD_NEW_SERVICE = "isAddNewService";
     LOGGING = "logging";
@@ -105,6 +105,10 @@ var ClassGenerator = class extends Generator {
         var servicePackageName = this.serviceName + "Pkg";
         var serviceTypeName = this.serviceName + "Type";
         var serviceName = this.serviceName;
+        var endpoint = Math.floor(Math.random() * 1000) + 8000;
+        var parts = this.serviceName.split(".");
+        var serviceMainClass = parts.pop();
+
         var serviceSrcPath = "";
         if (this.isAddNewService == false) {
             serviceSrcPath = path.join(
@@ -115,14 +119,12 @@ var ClassGenerator = class extends Generator {
         } else {
             serviceSrcPath = path.join(this.relativePath, this.serviceName);
         }
-        var serviceProjectFileName = path.join(
+        var servicePackagePath = path.join(serviceSrcPath, "PackageRoot");
+        var serviceCodePath = path.join(servicePackagePath, "Code");
+        var serviceProjectFilePath = path.join(
             serviceSrcPath,
             serviceProjName + ".csproj"
         );
-        var servicePackagePath = path.join(serviceSrcPath, "PackageRoot");
-        var endpoint = Math.floor(Math.random() * 1000) + 8000;
-        var parts = this.serviceName.split(".");
-        var serviceMainClass = parts.pop();
 
         this._generateApplicationManifest(
             appPackagePath,
@@ -151,6 +153,12 @@ var ClassGenerator = class extends Generator {
             serviceTypeName,
             serviceMainClass
         );
+
+        this._generateBuildScript();
+        this._generateInstallScript(appName, appTypeName);
+        this._generateUnInstallScript(appName, appTypeName);
+        this._generateUpgradeScript(appName, appTypeName);
+        this._generatelinuxOnlyScript(servicePackagePath, serviceCodePath, serviceProjName);
     }
 
     /**
@@ -531,7 +539,7 @@ var ClassGenerator = class extends Generator {
         );
     }
 
-    _generateInstallScript() {
+    _generateInstallScript(appName, appTypeName) {
         var is_Windows = process.platform == "win32";
         var sdkScriptExtension;
         if (is_Windows) {
@@ -544,10 +552,10 @@ var ClassGenerator = class extends Generator {
             this.fs.copyTpl(
                 this.templatePath("main/deploy/deploy" + sdkScriptExtension),
                 this.destinationPath(
-                    path.join(appPackage, "install" + sdkScriptExtension)
+                    path.join(this.props[this.SOLUTIONNAME], "install" + sdkScriptExtension)
                 ),
                 {
-                    appPackage: appPackage,
+                    appPackage: appName + "ApplicationPackageRoot",
                     appName: appName,
                     appTypeName: appTypeName
                 }
@@ -555,7 +563,7 @@ var ClassGenerator = class extends Generator {
         }
     }
 
-    _generateUnInstallScript() {
+    _generateUnInstallScript(appName, appTypeName) {
         var is_Windows = process.platform == "win32";
         var sdkScriptExtension;
         if (is_Windows) {
@@ -568,10 +576,10 @@ var ClassGenerator = class extends Generator {
             this.fs.copyTpl(
                 this.templatePath("main/deploy/un-deploy" + sdkScriptExtension),
                 this.destinationPath(
-                    path.join(appPackage, "uninstall" + sdkScriptExtension)
+                    path.join(this.props[this.SOLUTIONNAME], "uninstall" + sdkScriptExtension)
                 ),
                 {
-                    appPackage: appPackage,
+                    appPackage: appName + "ApplicationPackageRoot",
                     appName: appName,
                     appTypeName: appTypeName
                 }
@@ -579,7 +587,7 @@ var ClassGenerator = class extends Generator {
         }
     }
 
-    _generateUpgradeScript() {
+    _generateUpgradeScript(appName, appTypeName) {
         var is_Windows = process.platform == "win32";
         var sdkScriptExtension;
         if (is_Windows) {
@@ -592,10 +600,10 @@ var ClassGenerator = class extends Generator {
             this.fs.copyTpl(
                 this.templatePath("main/deploy/upgrade" + sdkScriptExtension),
                 this.destinationPath(
-                    path.join(appPackage, "upgrade" + sdkScriptExtension)
+                    path.join(this.props[this.SOLUTIONNAME], "upgrade" + sdkScriptExtension)
                 ),
                 {
-                    appPackage: appPackage,
+                    appPackage: appName + "ApplicationPackageRoot",
                     appName: appName,
                     appTypeName: appTypeName
                 }
@@ -605,6 +613,9 @@ var ClassGenerator = class extends Generator {
 
     _generateBuildScript() {
         var is_Windows = process.platform == "win32";
+        var is_Linux = process.platform == "linux";
+        var is_mac = process.platform == "darwin";
+
         var buildScriptExtension;
         if (is_Windows) {
             buildScriptExtension = ".cmd";
@@ -612,11 +623,22 @@ var ClassGenerator = class extends Generator {
             buildScriptExtension = ".sh";
         }
 
+        var serviceProject = path.join(
+            this.relativePath,
+            this.serviceName,
+            this.serviceName + ".csproj"
+        );
+
+        var codePath = path.join("PackageRoot", "Code");
+
         if (this.isAddNewService == false) {
             this.fs.copyTpl(
                 this.templatePath("main/build/build" + buildScriptExtension),
                 this.destinationPath(
-                    path.join(appPackage, "build" + buildScriptExtension)
+                    path.join(
+                        this.props[this.SOLUTIONNAME],
+                        "build" + buildScriptExtension
+                    )
                 ),
                 {
                     serviceProject: serviceProject,
@@ -629,47 +651,37 @@ var ClassGenerator = class extends Generator {
             if (is_Linux || is_mac) {
                 var appendToSettings =
                     "\n\
-          \ndotnet restore $DIR/../" +
+          \ndotnet restore $DIR/" +
                     serviceProject +
                     " -s https://api.nuget.org/v3/index.json \
-          \ndotnet build $DIR/../" +
+          \ndotnet build $DIR/" +
                     serviceProject +
                     " -v normal\
           \ncd " +
                     "`" +
-                    "dirname $DIR/../" +
+                    "dirname $DIR/" +
                     serviceProject +
                     "`" +
-                    "\ndotnet publish -o ../../../../" +
-                    appName +
-                    "/" +
-                    appName +
-                    "/" +
-                    servicePackage +
-                    "/Code\
-          \ncd -";
+                    "\ndotnet publish -o ./" +
+                    codePath +
+                    "\ncd -";
             } else if (is_Windows) {
                 var appendToSettings =
                     "\n\
-          \ndotnet restore %~dp0\\..\\" +
+          \ndotnet restore %~dp0\\" +
                     serviceProject +
                     " -s https://api.nuget.org/v3/index.json \
-          \ndotnet build %~dp0\\..\\" +
+          \ndotnet build %~dp0\\" +
                     serviceProject +
                     ' -v normal\
           \nfor %%F in ("' +
                     serviceProject +
                     '") do cd %%~dpF\
-          \ndotnet publish -o %~dp0\\..\\' +
-                    appName +
-                    "\\" +
-                    appName +
-                    "\\" +
-                    servicePackage +
-                    "\\Code";
+          \ndotnet publish -o %~dp0\\' +
+                    codePath + "\\n %~dp0\\..";
             }
             nodeFs.appendFile(
-                path.join(appPackage, "build" + buildScriptExtension),
+                path.join("build" + buildScriptExtension),
                 appendToSettings,
                 function(err) {
                     if (err) {
@@ -680,15 +692,15 @@ var ClassGenerator = class extends Generator {
         }
     }
 
-    _linuxOnly() {
+    _generatelinuxOnlyScript(appPackagePath, servicePackagePath, serviceProjName) {
+        var is_Linux = process.platform == "linux";
+
         if (is_Linux) {
             this.fs.copyTpl(
                 this.templatePath("main/common/dotnet-include.sh"),
                 this.destinationPath(
                     path.join(
-                        appPackage,
-                        appPackagePath,
-                        servicePackage,
+                        servicePackagePath,
                         "Code",
                         "dotnet-include.sh"
                     )
@@ -699,7 +711,7 @@ var ClassGenerator = class extends Generator {
                 this.fs.copyTpl(
                     this.templatePath("main/common/dotnet-include.sh"),
                     this.destinationPath(
-                        path.join(appPackage, "dotnet-include.sh")
+                        path.join(appPackagePath, "dotnet-include.sh")
                     ),
                     {}
                 );
@@ -710,9 +722,7 @@ var ClassGenerator = class extends Generator {
                 ),
                 this.destinationPath(
                     path.join(
-                        appPackage,
-                        appPackagePath,
-                        servicePackage,
+                        servicePackagePath,
                         "Code",
                         "entryPoint.sh"
                     )
@@ -903,15 +913,11 @@ var ClassGenerator = class extends Generator {
      * It is not run in sequence by the Yeoman environment run loop.
      */
     _generator_options_config() {
-        this.option(this.CONTAINER_PATH, {
+        this.option(this.CONTEXT_PATH, {
             type: String,
             require: true
         });
 
-        this.option(this.LOGGING, {
-            type: Boolean,
-            default: false
-        });
         this.option(this.LIB_PATH, {
             type: String,
             require: true
@@ -920,15 +926,20 @@ var ClassGenerator = class extends Generator {
             type: Boolean,
             require: true
         });
+
+        this.option(this.LOGGING, {
+            type: Boolean,
+            default: false
+        });
     }
 
     _generator_options_handler() {
-        this.containerPath = this.options[this.CONTAINER_PATH];
-        const storePath = path.join(this.containerPath, ".yo-rc.json");
+        this.contextPath = this.options[this.CONTEXT_PATH];
+        const storePath = path.join(this.contextPath, ".yo-rc.json");
         this.config = new Storage(this.rootGeneratorName(), this.fs, storePath);
         this._logTrace(
-            `Generator Option ${this.CONTAINER_PATH}: ${
-                this.options[this.CONTAINER_PATH]
+            `Generator Option ${this.CONTEXT_PATH}: ${
+                this.options[this.CONTEXT_PATH]
             }`
         );
 
