@@ -1,0 +1,12 @@
+/Users/LDTrung/Source Code/learning-hub/CaseStudy/ServiceFabric/SalesHUB.ProductService/SalesHUB.ProductService.Console/bin/Debug/netcoreapp3.1/SalesHUB.ProductService.Console.deps.json
+/Users/LDTrung/Source Code/learning-hub/CaseStudy/ServiceFabric/SalesHUB.ProductService/SalesHUB.ProductService.Console/bin/Debug/netcoreapp3.1/SalesHUB.ProductService.Console.runtimeconfig.json
+/Users/LDTrung/Source Code/learning-hub/CaseStudy/ServiceFabric/SalesHUB.ProductService/SalesHUB.ProductService.Console/bin/Debug/netcoreapp3.1/SalesHUB.ProductService.Console.runtimeconfig.dev.json
+/Users/LDTrung/Source Code/learning-hub/CaseStudy/ServiceFabric/SalesHUB.ProductService/SalesHUB.ProductService.Console/bin/Debug/netcoreapp3.1/SalesHUB.ProductService.Console.dll
+/Users/LDTrung/Source Code/learning-hub/CaseStudy/ServiceFabric/SalesHUB.ProductService/SalesHUB.ProductService.Console/bin/Debug/netcoreapp3.1/SalesHUB.ProductService.Console.pdb
+/Users/LDTrung/Source Code/learning-hub/CaseStudy/ServiceFabric/SalesHUB.ProductService/SalesHUB.ProductService.Console/bin/Debug/netcoreapp3.1/Newtonsoft.Json.dll
+/Users/LDTrung/Source Code/learning-hub/CaseStudy/ServiceFabric/SalesHUB.ProductService/SalesHUB.ProductService.Console/obj/Debug/netcoreapp3.1/SalesHUB.ProductService.Console.csprojAssemblyReference.cache
+/Users/LDTrung/Source Code/learning-hub/CaseStudy/ServiceFabric/SalesHUB.ProductService/SalesHUB.ProductService.Console/obj/Debug/netcoreapp3.1/SalesHUB.ProductService.Console.AssemblyInfoInputs.cache
+/Users/LDTrung/Source Code/learning-hub/CaseStudy/ServiceFabric/SalesHUB.ProductService/SalesHUB.ProductService.Console/obj/Debug/netcoreapp3.1/SalesHUB.ProductService.Console.AssemblyInfo.cs
+/Users/LDTrung/Source Code/learning-hub/CaseStudy/ServiceFabric/SalesHUB.ProductService/SalesHUB.ProductService.Console/obj/Debug/netcoreapp3.1/SalesHUB.ProductService.Console.csproj.CopyComplete
+/Users/LDTrung/Source Code/learning-hub/CaseStudy/ServiceFabric/SalesHUB.ProductService/SalesHUB.ProductService.Console/obj/Debug/netcoreapp3.1/SalesHUB.ProductService.Console.dll
+/Users/LDTrung/Source Code/learning-hub/CaseStudy/ServiceFabric/SalesHUB.ProductService/SalesHUB.ProductService.Console/obj/Debug/netcoreapp3.1/SalesHUB.ProductService.Console.pdb

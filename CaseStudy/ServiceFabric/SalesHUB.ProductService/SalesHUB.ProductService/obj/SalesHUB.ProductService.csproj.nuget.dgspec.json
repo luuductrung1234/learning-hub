@@ -1,0 +1,64 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/LDTrung/Source Code/learning-hub/CaseStudy/ServiceFabric/SalesHUB.ProductService/SalesHUB.ProductService/SalesHUB.ProductService.csproj": {}
+  },
+  "projects": {
+    "/Users/LDTrung/Source Code/learning-hub/CaseStudy/ServiceFabric/SalesHUB.ProductService/SalesHUB.ProductService/SalesHUB.ProductService.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/LDTrung/Source Code/learning-hub/CaseStudy/ServiceFabric/SalesHUB.ProductService/SalesHUB.ProductService/SalesHUB.ProductService.csproj",
+        "projectName": "SalesHUB.ProductService",
+        "projectPath": "/Users/LDTrung/Source Code/learning-hub/CaseStudy/ServiceFabric/SalesHUB.ProductService/SalesHUB.ProductService/SalesHUB.ProductService.csproj",
+        "packagesPath": "/Users/LDTrung/.nuget/packages/",
+        "outputPath": "/Users/LDTrung/Source Code/learning-hub/CaseStudy/ServiceFabric/SalesHUB.ProductService/SalesHUB.ProductService/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/Users/LDTrung/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.102/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
