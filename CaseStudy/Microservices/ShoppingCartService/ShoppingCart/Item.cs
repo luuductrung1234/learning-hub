@@ -1,35 +1,44 @@
 namespace ShoppingCartService.ShoppingCart
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class Item
     {
         public int ProductItemCode { get; }
 
         public string ProductItemName { get; }
 
-        public int ProductUnitCode { get; }
-
-        public string ProductUnitName { get; }
+        public int SelectedUnitCode { get; private set; }
 
         public string Description { get; }
 
-        public ItemPrice Price { get; }
+        public ItemFormat CaseFormat { get; }
 
-        public Item(
-            int productItemCode,
-            string productItemName,
-            int productUnitCode,
-            string productUnitName,
-            string description,
-            ItemPrice price)
+        public ItemFormat BundleFormat { get; }
+
+        public ItemFormat UpcFormat { get; }
+
+        public Item(int productItemCode, string productItemName, int selectedUnitCode, string description, ItemFormat caseFormat, ItemFormat bundleFormat, ItemFormat upcFormat)
         {
             ProductItemCode = productItemCode;
             ProductItemName = productItemName;
-            ProductUnitCode = productUnitCode;
-            ProductUnitName = productUnitName;
+            SelectedUnitCode = selectedUnitCode;
             Description = description;
-            Price = price;
+            CaseFormat = caseFormat;
+            BundleFormat = bundleFormat;
+            UpcFormat = upcFormat;
         }
 
+        public void SelectUnit(int unitCode)
+        {
+            if (CaseFormat.Unit.UnitCode == unitCode
+                || BundleFormat.Unit.UnitCode == unitCode
+                || UpcFormat.Unit.UnitCode == unitCode)
+            {
+                SelectedUnitCode = unitCode;
+            }
+        }
 
         // override object.Equals
         public override bool Equals(object obj)
@@ -40,13 +49,14 @@ namespace ShoppingCartService.ShoppingCart
             }
 
             var that = obj as Item;
-            return this.ProductItemCode.Equals(that.ProductItemCode) && this.ProductUnitCode.Equals(that.ProductUnitCode);
+            return this.ProductItemCode.Equals(that.ProductItemCode)
+                && this.SelectedUnitCode.Equals(that.SelectedUnitCode);
         }
 
         // override object.GetHashCode
         public override int GetHashCode()
         {
-            return this.ProductItemCode.GetHashCode() + this.ProductUnitCode.GetHashCode();
+            return this.ProductItemCode.GetHashCode() + this.SelectedUnitCode.GetHashCode();
         }
     }
 }

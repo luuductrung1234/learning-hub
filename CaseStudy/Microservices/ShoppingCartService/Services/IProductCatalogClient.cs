@@ -7,6 +7,6 @@ namespace ShoppingCartService.Services
 
     public interface IProductCatalogClient
     {
-        Task<IEnumerable<Item>> GetShoppingCartItems(IEnumerable<int> productItemCodes);
+        Task<IEnumerable<Item>> GetShoppingCartItems(int[] productItemCodes);
     }
 }
