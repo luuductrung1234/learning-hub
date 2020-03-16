@@ -11,6 +11,8 @@ namespace ShoppingCartService.EventFeed
         public EventFeedModule(IEventStore eventStore) : base("/events")
         {
             _eventStore = eventStore ?? throw new ArgumentNullException(nameof(eventStore));
+
+            SetupGetEvents();
         }
 
         private void SetupGetEvents() =>

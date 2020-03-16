@@ -26,6 +26,7 @@ namespace ShoppingCartService.ShoppingCart
 
             SetupGetShoppingCart();
             SetupAddShoppingCartItems();
+            SetupRemoveShoppingCartItems();
         }
 
         private void SetupGetShoppingCart() =>
