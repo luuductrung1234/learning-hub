@@ -9,35 +9,27 @@ namespace ShoppingCartService.ShoppingCart
 
         public string ProductItemName { get; }
 
-        public int SelectedUnitCode { get; private set; }
+        public int SelectedUnitCode { get; }
+
+        public int Quantity { get; private set; }
+
+        public ItemFormat Format { get; }
 
         public string Description { get; }
 
-        public ItemFormat CaseFormat { get; }
-
-        public ItemFormat BundleFormat { get; }
-
-        public ItemFormat UpcFormat { get; }
-
-        public Item(int productItemCode, string productItemName, int selectedUnitCode, string description, ItemFormat caseFormat, ItemFormat bundleFormat, ItemFormat upcFormat)
+        public Item(int productItemCode, string productItemName, int selectedUnitCode, int quantity, ItemFormat format, string description)
         {
             ProductItemCode = productItemCode;
             ProductItemName = productItemName;
             SelectedUnitCode = selectedUnitCode;
+            Quantity = quantity;
             Description = description;
-            CaseFormat = caseFormat;
-            BundleFormat = bundleFormat;
-            UpcFormat = upcFormat;
+            Format = format;
         }
 
-        public void SelectUnit(int unitCode)
+        public void SetQuantity(int quantity)
         {
-            if (CaseFormat.Unit.UnitCode == unitCode
-                || BundleFormat.Unit.UnitCode == unitCode
-                || UpcFormat.Unit.UnitCode == unitCode)
-            {
-                SelectedUnitCode = unitCode;
-            }
+            Quantity = quantity;
         }
 
         // override object.Equals

@@ -6,6 +6,7 @@ namespace ShoppingCartService.ShoppingCart
     using Nancy.ModelBinding;
     using ShoppingCartService.EventFeed;
     using ShoppingCartService.Services;
+    using ShoppingCartService.ShoppingCart.MetaModels;
 
     public class ShoppingCartModule : NancyModule
     {
@@ -39,12 +40,12 @@ namespace ShoppingCartService.ShoppingCart
             Post("/{userId:int}", async (parameters, _) =>
             {
                 var userId = (int)parameters.userId;
-                var productItemCodes = this.Bind<int[]>();
+                var addItems = this.Bind<AddItem[]>();
 
                 var shoppingCart = _shoppingCartStore.Get(userId);
                 var itemsToAdd = await 
                     _productCatalogClient
-                        .GetShoppingCartItems(productItemCodes)
+                        .GetShoppingCartItems(addItems)
                         .ConfigureAwait(false);
 
                 shoppingCart.AddItems(itemsToAdd, _eventStore);

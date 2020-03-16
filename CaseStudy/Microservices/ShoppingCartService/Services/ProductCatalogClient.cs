@@ -9,12 +9,14 @@ namespace ShoppingCartService.Services
     using Polly;
     using ShoppingCartService.Services.Response;
     using ShoppingCartService.ShoppingCart;
+    using ShoppingCartService.ShoppingCart.MetaModels;
+
     public class ProductCatalogClient : IProductCatalogClient
     {
-        private static string productCatalogBaseUrl = @"https://private-bd47bd-trungluu97.apiary-mock.com";
+        private static string productCatalogBaseUrl = @"https://cf985535-3347-4603-a9b1-c71c14134985.mock.pstmn.io";
         private static string getProductPathTemplate = "/products?productItemCodes=[{0}]";
 
-        private static IAsyncPolicy exponentialRetryPolicy = 
+        private static IAsyncPolicy exponentialRetryPolicy =
             Policy
                 .Handle<Exception>()
                 .WaitAndRetryAsync(
@@ -23,18 +25,19 @@ namespace ShoppingCartService.Services
                     (ex, _) => Console.WriteLine(ex.ToString())
                 );
 
-        public Task<IEnumerable<Item>> GetShoppingCartItems(int[] productItemCodes) =>
+        public Task<IEnumerable<Item>> GetShoppingCartItems(AddItem[] addItems) =>
             exponentialRetryPolicy
-                .ExecuteAsync(async() => 
-                    await GetItemFromProductCatalogService(productItemCodes)
+                .ExecuteAsync(async () =>
+                    await GetItemFromProductCatalogService(addItems)
                         .ConfigureAwait(false));
 
-        private async Task<IEnumerable<Item>> GetItemFromProductCatalogService(int[] productItemCodes)
+        private async Task<IEnumerable<Item>> GetItemFromProductCatalogService(AddItem[] addItems)
         {
+            int[] productItemCodes = addItems.Select(item => item.ProductItemCode).ToArray();
             var response = await
                 RequestProductFromApi(productItemCodes)
                 .ConfigureAwait(false);
-            return await ConvertToItems(response)
+            return await ConvertToItems(response, addItems)
                 .ConfigureAwait(false);
         }
 
@@ -50,42 +53,29 @@ namespace ShoppingCartService.Services
             }
         }
 
-        private static async Task<IEnumerable<Item>> ConvertToItems(HttpResponseMessage response)
+        private static async Task<IEnumerable<Item>> ConvertToItems(HttpResponseMessage response, AddItem[] addItems)
         {
             response.EnsureSuccessStatusCode();
             var products = JsonConvert.DeserializeObject<List<ProductCatalogResponse>>(
                 await response.Content.ReadAsStringAsync().ConfigureAwait(false));
             return products.Select(p =>
             {
-                var caseUnit = p.CaseFormat.Unit;
-                var casePrice = p.GetCaseFormatPrice();
-                var bundleUnit = p.BundleFormat.Unit;
-                var bundlePrice = p.GetBundleFormatPrice();
-                var upcUnit = p.UpcFormat.Unit;
-                var upcPrice = p.GetUpcFormatPrice();
-                var caseFormat = new ItemFormat(
-                        new ItemUnit(caseUnit.UnitCode,
-                            caseUnit.UnitName,
-                            caseUnit.Conversion),
-                        new ItemPrice(casePrice.Currency, casePrice.Amount)
-                    );
-                var bundleFormat = new ItemFormat(
-                        new ItemUnit(bundleUnit.UnitCode,
-                            bundleUnit.UnitName,
-                            bundleUnit.Conversion),
-                        new ItemPrice(bundlePrice.Currency, bundlePrice.Amount)
-                    );
-                var upcFormat = new ItemFormat(
-                        new ItemUnit(upcUnit.UnitCode,
-                            upcUnit.UnitName,
-                            upcUnit.Conversion),
-                        new ItemPrice(upcPrice.Currency, upcPrice.Amount)
-                    );
-                int defaultSelectedUnitCode = caseFormat.Unit.UnitCode;
+                var addItem = addItems.First(item => item.ProductItemCode == p.ProductItemCode);
+
+                var selectedFormat = p.GetFormat(addItem.ProductUnitCode);
+                var price = selectedFormat.GetRetailerPrice();
+                var format = new ItemFormat(
+                    new ItemUnit(
+                        selectedFormat.Unit.UnitCode,
+                        selectedFormat.Unit.UnitName,
+                        selectedFormat.Unit.Conversion),
+                    new ItemPrice(price.Currency, price.Amount));
                 return new Item(p.ProductItemCode,
                     p.ProductItemName,
-                    defaultSelectedUnitCode,
-                    p.Description, caseFormat, bundleFormat, upcFormat);
+                    addItem.ProductItemCode,
+                    addItem.Quantity,
+                    format,
+                    p.Description);
             });
         }
     }

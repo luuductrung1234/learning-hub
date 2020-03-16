@@ -26,19 +26,20 @@ namespace ShoppingCartService.Services.Response
 
         public ProductFormatResponse UpcFormat { get; set; }
 
-        public ProductPriceResponse GetCaseFormatPrice()
+        public ProductFormatResponse GetFormat(int unitCode)
         {
-            return CaseFormat.Prices.First(price => price.PriceGroupCode == 1);
-        }
+            if (BundleFormat.Unit.UnitCode == unitCode)
+            {
+                return BundleFormat;
+            }
 
-        public ProductPriceResponse GetBundleFormatPrice()
-        {
-            return BundleFormat.Prices.First(price => price.PriceGroupCode == 1);
-        }
+            if (UpcFormat.Unit.UnitCode == unitCode)
+            {
+                return UpcFormat;
+            }
 
-        public ProductPriceResponse GetUpcFormatPrice()
-        {
-            return UpcFormat.Prices.First(price => price.PriceGroupCode == 1);
+            // if unitCode is not valid, return CaseFormat by default
+            return CaseFormat;
         }
     }
 }
