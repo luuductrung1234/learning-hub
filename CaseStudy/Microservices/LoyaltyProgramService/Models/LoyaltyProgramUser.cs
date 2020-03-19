@@ -8,6 +8,6 @@ namespace LoyaltyProgramService.Models
 
         public int LoyaltyPoints { get; set; }
 
-        public LoyaltyProgramSettings SettingsMyProperty { get; set; }
+        public LoyaltyProgramSettings Settings { get; set; }
     }
 }
