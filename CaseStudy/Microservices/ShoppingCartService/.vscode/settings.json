@@ -2,5 +2,15 @@
     "files.exclude": {
         "**/bin": true,
         "**/obj": true
-    }
+    },
+    "workbench.colorCustomizations": {
+        "titleBar.activeBackground": "#00a8cc",
+        "titleBar.inactiveBackground": "#00a8cc99",
+        "titleBar.activeForeground": "#e7e7e7",
+        "titleBar.inactiveForeground": "#e7e7e799",
+        "statusBar.background": "#00a8cc",
+        "statusBarItem.hoverBackground": "#00d2ff",
+        "statusBar.foreground": "#e7e7e7"
+    },
+    "peacock.color": "00a8cc"
 }
