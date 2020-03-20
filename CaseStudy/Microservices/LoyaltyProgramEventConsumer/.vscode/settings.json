@@ -1,0 +1,20 @@
+{
+    "workbench.colorCustomizations": {
+        "titleBar.activeBackground": "#6180e5",
+        "titleBar.inactiveBackground": "#6180e599",
+        "titleBar.activeForeground": "#15202b",
+        "titleBar.inactiveForeground": "#15202b99",
+        "statusBar.background": "#6180e5",
+        "statusBarItem.hoverBackground": "#355dde",
+        "statusBar.foreground": "#15202b"
+    },
+    "peacock.color": "#6180e5",
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/obj": true
+    }
+}
