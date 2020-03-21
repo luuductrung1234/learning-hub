@@ -15,7 +15,7 @@ namespace ShoppingCartService.ShoppingCart
         private readonly IEventStore _eventStore;
 
         public ShoppingCartModule(
-            IShoppingCartStore shoppingCartStore, 
+            IShoppingCartStore shoppingCartStore,
             IProductCatalogClient productCatalogClient,
             IEventStore eventStore)
             : base("/shoppingcart")
@@ -33,8 +33,8 @@ namespace ShoppingCartService.ShoppingCart
             Get("/{userId:int}", async (parameters, _) =>
             {
                 var userId = (int)parameters.userId;
-                var shoppingCart = _shoppingCartStore.Get(userId);
-                return await Task.FromResult(shoppingCart);
+                var shoppingCart = await _shoppingCartStore.Get(userId);
+                return shoppingCart;
             });
 
         private void SetupAddShoppingCartItems() =>
@@ -43,15 +43,15 @@ namespace ShoppingCartService.ShoppingCart
                 var userId = (int)parameters.userId;
                 var addItems = this.Bind<AddItem[]>();
 
-                var shoppingCart = _shoppingCartStore.Get(userId);
-                var itemsToAdd = await 
+                var shoppingCart = await _shoppingCartStore.Get(userId);
+                var itemsToAdd = await
                     _productCatalogClient
                         .GetShoppingCartItems(addItems)
                         .ConfigureAwait(false);
 
                 shoppingCart.AddItems(itemsToAdd, _eventStore);
 
-                _shoppingCartStore.Save(shoppingCart);
+                await _shoppingCartStore.Save(shoppingCart);
 
                 return shoppingCart;
             });
@@ -62,11 +62,11 @@ namespace ShoppingCartService.ShoppingCart
                 var userId = (int)parameters.userId;
                 var productItemCodes = this.Bind<int[]>();
 
-                var shoppingCart = _shoppingCartStore.Get(userId);
+                var shoppingCart = await _shoppingCartStore.Get(userId);
 
                 shoppingCart.RemoveItems(productItemCodes, _eventStore);
 
-                _shoppingCartStore.Save(shoppingCart);
+                await _shoppingCartStore.Save(shoppingCart);
 
                 return await Task.FromResult(shoppingCart);
             });

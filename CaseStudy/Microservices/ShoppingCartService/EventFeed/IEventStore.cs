@@ -1,11 +1,12 @@
 namespace ShoppingCartService.EventFeed
 {
     using System.Collections.Generic;
+    using System.Threading.Tasks;
 
     public interface IEventStore
     {
-        IEnumerable<Event> GetEvents(long firstEventSequenceNumber, long lastEventSequenceNumber);
+        Task<IEnumerable<Event>> GetEvents(long firstEventSequenceNumber, long lastEventSequenceNumber);
 
-        void Raise(string eventName, object payload);
+        Task Raise(string eventName, object payload);
     }
 }

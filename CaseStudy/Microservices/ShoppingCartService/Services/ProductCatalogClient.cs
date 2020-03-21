@@ -7,14 +7,22 @@ namespace ShoppingCartService.Services
     using System.Threading.Tasks;
     using Newtonsoft.Json;
     using Polly;
+    using ShoppingCartService.Services.Configurations;
     using ShoppingCartService.Services.Response;
     using ShoppingCartService.ShoppingCart;
     using ShoppingCartService.ShoppingCart.MetaModels;
 
     public class ProductCatalogClient : IProductCatalogClient
     {
-        private static string productCatalogBaseUrl = @"https://cf985535-3347-4603-a9b1-c71c14134985.mock.pstmn.io";
-        private static string getProductPathTemplate = "/products?productItemCodes=[{0}]";
+        private readonly string productCatalogBaseUrl;
+        private readonly string getProductPathTemplate = "/products?productItemCodes=[{0}]";
+
+        public ProductCatalogClient(ProductCatalogClientConfig config)
+        {
+            if (config is null)
+                throw new ArgumentNullException(nameof(config));
+            productCatalogBaseUrl = config.BaseUrl;
+        }
 
         private static IAsyncPolicy exponentialRetryPolicy =
             Policy
@@ -41,7 +49,7 @@ namespace ShoppingCartService.Services
                 .ConfigureAwait(false);
         }
 
-        private static async Task<HttpResponseMessage> RequestProductFromApi(int[] productItemCodes)
+        private async Task<HttpResponseMessage> RequestProductFromApi(int[] productItemCodes)
         {
             var productsResource = string.Format(
                 getProductPathTemplate, string.Join(",", productItemCodes));
@@ -53,7 +61,7 @@ namespace ShoppingCartService.Services
             }
         }
 
-        private static async Task<IEnumerable<Item>> ConvertToItems(HttpResponseMessage response, AddItem[] addItems)
+        private async Task<IEnumerable<Item>> ConvertToItems(HttpResponseMessage response, AddItem[] addItems)
         {
             response.EnsureSuccessStatusCode();
             var products = JsonConvert.DeserializeObject<List<ProductCatalogResponse>>(

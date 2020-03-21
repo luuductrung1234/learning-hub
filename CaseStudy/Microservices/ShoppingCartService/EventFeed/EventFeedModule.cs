@@ -27,8 +27,8 @@ namespace ShoppingCartService.EventFeed
                 {
                     lastEventSequenceNumber = long.MaxValue;
                 }
-                var events = _eventStore.GetEvents(firstEventSequenceNumber, lastEventSequenceNumber);
-                return await Task.FromResult(events);
+                var events = await _eventStore.GetEvents(firstEventSequenceNumber, lastEventSequenceNumber);
+                return events;
             });
     }
 }

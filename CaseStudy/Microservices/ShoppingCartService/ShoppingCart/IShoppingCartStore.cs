@@ -1,9 +1,11 @@
 namespace ShoppingCartService.ShoppingCart
 {
+    using System.Threading.Tasks;
+
     public interface IShoppingCartStore
     {
-        ShoppingCart Get(int userId);
+        Task<ShoppingCart> Get(int userId);
 
-        void Save(ShoppingCart shoppingCart);
+        Task Save(ShoppingCart shoppingCart);
     }
 }
